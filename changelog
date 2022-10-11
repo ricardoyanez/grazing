@@ -1,0 +1,7 @@
+grazing (0.0.1) UNRELEASED; urgency=medium
+
+  * Initial release.
+  * Created github repository https://github.com/ricardoyanez/grazing
+  * Downloaded GRAZING_9 from http://personalpages.to.infn.it/~nanni/grazing/
+
+ -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700
