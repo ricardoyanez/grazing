@@ -48,9 +48,11 @@ New:
      CALL D02PEF(F2,N,XEND,X,Y,YP,YMAX,  &
                   IUSER,RUSER,IWSAV,RWSAV,IFAIL)
 ```
-IWSAV is an integer array of length 130 and RWSAV is a real array of length 350+32×N.  
-IUSER and RUSER are arrays available to allow you to pass information to the user defined routine F2.  
-The definition of F2 can use the original routine FCN as follows:  
+`IWSAV` is an integer array of length 130 and `RWSAV` is a real array of length 350+32×`N`.
+
+`IUSER` and `RUSER` are arrays available to allow you to pass information to the user defined routine `F2`.
+
+The definition of `F2` can use the original routine `FCN` as follows:  
 ```Fortran
    SUBROUTINE F2(T,N,Y,YP,IUSER,RUSER)
 !     .. Scalar Arguments ..
