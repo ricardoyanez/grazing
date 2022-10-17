@@ -36,15 +36,20 @@ NAG Library Documetation for Mark 18 does not have any information about D02BBF.
 
 **D02BAF**
 Withdrawn at Mark 18.
+
 Replaced by D02PEF and associated D02P routines.
 
-Old: `CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)`
-New:   `THRES(1:N) = TOL`
-`     CALL D02PQF(N,X,XEND,Y,TOL,THRESH,  &`
-`                  -2,0.0D0,IWSAV,RWSAV,IFAIL)`
-`     CALL D02PEF(F2,N,XEND,X,Y,YP,YMAX,  &`
-`                  IUSER,RUSER,IWSAV,RWSAV,IFAIL)`
-
+Old: 
+```Fortran
+CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
+```
+New:
+```Fortran THRES(1:N) = TOL
+     CALL D02PQF(N,X,XEND,Y,TOL,THRESH,  &
+                  -2,0.0D0,IWSAV,RWSAV,IFAIL)
+     CALL D02PEF(F2,N,XEND,X,Y,YP,YMAX,  &
+                  IUSER,RUSER,IWSAV,RWSAV,IFAIL)
+```
 IWSAV is an integer array of length 130 and RWSAV is a real array of length 350+32×N.
 IUSER and RUSER are arrays available to allow you to pass information to the user defined routine F2.
 The definition of F2 can use the original routine FCN as follows:
