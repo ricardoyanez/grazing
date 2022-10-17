@@ -75,4 +75,10 @@ The definition of `F2` can use the original routine `FCN` as follows:
     End Subroutine F2
 ```
 
-The replacements D02PQF and D02PEF appeared starting from [Mark 24](https://www.nag.com/numeric/nl/nagdoc_24/nagdoc_fl24/html/d02/d02conts.html)
+The replacements D02PQF and D02PEF appeared starting from [Mark 24](https://www.nag.com/numeric/nl/nagdoc_24/nagdoc_fl24/html/d02/d02conts.html). D02PQF is a setup routine for D02PEF.
+
+The documentation, Mark 24, says, "D02PEF solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods."
+
+## RKSUITE - a suite of Runde-Kutta codes
+
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community and has no license. I will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch.
