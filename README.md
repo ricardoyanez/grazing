@@ -18,15 +18,15 @@ The data files are defined through environmental variables. This supercedes the 
 
 In .bashrc,
 
-GRAZ_DIR=[path to GRAZING data directory]
+`GRAZ_DIR=[path to GRAZING data directory]`
 
-GRAZ_MASS_EXP=$GRAZ_DIR/massexp_2004.dat
+`GRAZ_MASS_EXP=$GRAZ_DIR/massexp_2004.dat`
 
-GRAZ_MASS_NIX=$GRAZ_DIR/mtablex_2004.dat
+`GRAZ_MASS_NIX=$GRAZ_DIR/mtablex_2004.dat`
 
-GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat
+`GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat`
 
-export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
+`export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23`
 
 I personally put the data files in /usr/local/share/grazing/
 
@@ -51,9 +51,11 @@ New:
                   IUSER,RUSER,IWSAV,RWSAV,IFAIL)
 ```
 IWSAV is an integer array of length 130 and RWSAV is a real array of length 350+32×N.
-IUSER and RUSER are arrays available to allow you to pass information to the user defined routine F2.
-The definition of F2 can use the original routine FCN as follows:
 
+IUSER and RUSER are arrays available to allow you to pass information to the user defined routine F2.
+
+The definition of F2 can use the original routine FCN as follows:
+```Fortran
    SUBROUTINE F2(T,N,Y,YP,IUSER,RUSER)
 !     .. Scalar Arguments ..
       Real (Kind=wp), Intent (In)      :: t
@@ -72,4 +74,4 @@ The definition of F2 can use the original routine FCN as follows:
 
       Return
     End Subroutine F2
-
+```
