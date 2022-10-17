@@ -10,7 +10,7 @@ $ debchange -a --changelog changelog
 
 ## GNU Scientific Library (GSL)
 
-In Debian, the GSL library is distributed and installed through the development package libgsl-dev.
+In Debian, the [GSL library](https://www.gnu.org/software/gsl/) is distributed and installed through the development package libgsl-dev.
 
 ## Environment variables
 
