@@ -30,7 +30,6 @@
  *
  */
 
-
 void nag_x05baf_(double *elaps) {
   *elaps = (double)clock()/CLOCKS_PER_SEC;
   return;
