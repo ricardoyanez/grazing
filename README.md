@@ -32,21 +32,18 @@ I personally put the data files in /usr/local/share/grazing/
 
 ## Calls to D02BBF
 
-NAG Library Documetation for Mark 18 does not have any information about D02BBF. It appears D02BBF has been replaced since Mark 17. The web page,
+NAG Library Documetation for Mark 18 does not have any information about D02BBF. It appears D02BBF has been replaced since Mark 17. This [web page](https://wwwafs.portici.enea.it/software/libnag/nagdoc_fl24/html/GENINT/replace.html) contains advice. It literally says,
 
- https://wwwafs.portici.enea.it/software/libnag/nagdoc_fl24/html/GENINT/replace.html
-
-says literally,
-
- Withdrawn at Mark 18.
+**D02BAF**
+Withdrawn at Mark 18.
 Replaced by D02PEF and associated D02P routines.
 
-Old: CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
-New:   THRES(1:N) = TOL
-     CALL D02PQF(N,X,XEND,Y,TOL,THRESH,  &
-                  -2,0.0D0,IWSAV,RWSAV,IFAIL)
-     CALL D02PEF(F2,N,XEND,X,Y,YP,YMAX,  &
-                  IUSER,RUSER,IWSAV,RWSAV,IFAIL)
+Old: `CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)`
+New:   `THRES(1:N) = TOL`
+`     CALL D02PQF(N,X,XEND,Y,TOL,THRESH,  &`
+`                  -2,0.0D0,IWSAV,RWSAV,IFAIL)`
+`     CALL D02PEF(F2,N,XEND,X,Y,YP,YMAX,  &`
+`                  IUSER,RUSER,IWSAV,RWSAV,IFAIL)`
 
 IWSAV is an integer array of length 130 and RWSAV is a real array of length 350+32×N.
 IUSER and RUSER are arrays available to allow you to pass information to the user defined routine F2.
