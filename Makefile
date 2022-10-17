@@ -1,4 +1,5 @@
 F77=gfortran
+F90=gfortran
 #FFLAGS=-finit-local-zero -fno-automatic -fno-backslash -fdollar-ok
 FFLAGS=-g
 
@@ -61,13 +62,20 @@ NAG_OBJ=x05baf.o
 
 NAG_SRC=$(NAG_OBJ:%.o=%.c)
 
-libnag.so: nag.f $(NAG_SRC)
+libnag.so: nag.f d02bbf.f90 $(NAG_SRC) rksuite.o
 	$(F77) $(FFLAGS) -fPIC -c nag.f
+	$(F90) $(FFLAGS) -fPIC -c d02bbf.f90
 	$(CC) $(CFLAGS) -fPIC -c $(NAG_SRC)
-	$(F77) -shared -o libnag.so nag.o $(NAG_OBJ)
+	$(F77) -shared -o libnag.so nag.o d02bbf.o rksuite.o $(NAG_OBJ)
+
+rksuite.o:
+ifeq (,$(wildcard ./rksuite.f))
+	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f -O rksuite.f
+endif
+	$(F77) $(FFLAGS) -fPIC -c rksuite.f
 
 patch:
 	diff -Naur fys_lib.f.orig fys_lib.f > fys_lib.f.patch
 
 clean:
-	rm -f *.o *.so
+	rm -f *.o *.so rksuite.f
