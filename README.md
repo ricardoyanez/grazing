@@ -8,11 +8,11 @@ $ debchange --create --newversion 0.0.1 --package grazing --changelog changelog
 
 $ debchange -a --changelog changelog
 
-##GNU Scientific Library (GSL)
+## GNU Scientific Library (GSL)
 
 In Debian, the GSL library is distributed and installed through the development package libgsl-dev.
 
-##Environment variables
+## Environment variables
 ---------------------
 
 The data files are defined through environmental variables. This supercedes the file names defined in grazing_file.icl.
@@ -31,7 +31,7 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 
 I personally put the data files in /usr/local/share/grazing/
 
-##Calls to D02BBF
+## Calls to D02BBF
 ---------------
 
 NAG Library Documetation for Mark 18 does not have any information about D02BBF. It appears D02BBF has been replaced since Mark 17. The web page,
