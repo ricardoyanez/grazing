@@ -81,4 +81,4 @@ The documentation, Mark 24, says, "`D02PEF` solves an initial value problem for 
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
-[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable no license. This is perhaps intentional. I will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation document is also downloadef
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation is also downloaded.
