@@ -78,7 +78,7 @@ C     NAG X05BAF returns the amount of processor time used since an unspecified
 C     previous time, via the routine name.
       real*8 function X05BAF()
       real*8 elaps
-      write(*,*) '*** call to X05BAF'
+C      write(*,*) '*** call to X05BAF'
       call nag_X05BAF(elaps)
       X05BAF = elaps
       return

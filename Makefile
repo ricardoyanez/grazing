@@ -66,5 +66,8 @@ libnag.so: nag.f $(NAG_SRC)
 	$(CC) $(CFLAGS) -fPIC -c $(NAG_SRC)
 	$(F77) -shared -o libnag.so nag.o $(NAG_OBJ)
 
+patch:
+	diff -Naur fys_lib.f.orig fys_lib.f > fys_lib.f.patch
+
 clean:
 	rm -f *.o *.so
