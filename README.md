@@ -9,7 +9,6 @@ $ debchange --create --newversion 0.0.1 --package grazing --changelog changelog
 $ debchange -a --changelog changelog
 
 ##GNU Scientific Library (GSL)
-----------------------------
 
 In Debian, the GSL library is distributed and installed through the development package libgsl-dev.
 
