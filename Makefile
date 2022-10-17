@@ -69,13 +69,18 @@ libnag.so: nag.f d02bbf.f90 $(NAG_SRC) rksuite.o
 	$(F77) -shared -o libnag.so nag.o d02bbf.o rksuite.o $(NAG_OBJ)
 
 rksuite.o:
+ifeq (,$(wildcard ./rksuite.pdf))
+	wget https://netlib.sandia.gov/ode/rksuite/rksuite.doc -O rksuite.doc
+endif
 ifeq (,$(wildcard ./rksuite.f))
 	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f -O rksuite.f
 endif
 	$(F77) $(FFLAGS) -fPIC -c rksuite.f
+	/usr/bin/lowriter --headless --convert-to pdf:writer_pdf_Export rksuite.doc
+	rm -f rksuite.doc
 
 patch:
 	diff -Naur fys_lib.f.orig fys_lib.f > fys_lib.f.patch
 
 clean:
-	rm -f *.o *.so rksuite.f
+	rm -f *.o *.so rksuite.f rksuite.pdf

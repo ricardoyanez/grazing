@@ -6,5 +6,6 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * Environmental variables GRAZ_MASS_EXP, GRAZ_MASS_NIX and GRAZ_FILE_BE23 define the location of data files. This supercedes the paths defined in grazing_file.inc
   * X05BAF replaced with a C wrapper that uses clock()
   * Download RKSUITE Fortran code and compile into shared library.
+  * Download rksuite.doc and convert to PDF.
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700
