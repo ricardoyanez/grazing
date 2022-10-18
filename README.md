@@ -1,4 +1,6 @@
-# grazing
+
+# GRAZING
+
 Replacing NAG routines for free or open-source alternatives
 
 ## NAG Documentation
