@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Ricardo Yanez <ricardo.yanez@calel.org>
  *
- * C wrapper to NAG Fortran Library X05BAF Routine
+ * Part of a C wrapper to the NAG Fortran Library
  *
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@
  *
  */
 
-void nag_x05baf_(double *elaps) {
+void _x05baf_(double *elaps) {
   *elaps = (double)clock()/CLOCKS_PER_SEC;
   return;
 }
