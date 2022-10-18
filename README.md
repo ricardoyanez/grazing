@@ -27,9 +27,9 @@ I personally put the data files in `/usr/local/share/grazing/`.
 
 C05ADF locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
 ```Fortran
-SUBROUTINE C05ADF(A, B, EPS, ETA, F, X, IFAIL)
+SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
 INTEGER IFAIL
-real A, B, EPS, ETA, F, X
+real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
