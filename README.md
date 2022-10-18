@@ -2,7 +2,9 @@
 
 Replacing NAG routines for free or open-source alternatives
 
-Using debchange to create and manage the changelog,
+## changelog
+
+This project uses debchange to create and manage the changelog,
 ```
 $ debchange --create --newversion 0.0.1 --package grazing --changelog changelog  
 $ debchange -a --changelog changelog
@@ -27,6 +29,20 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 ```
 
 I personally put the data files in `/usr/local/share/grazing/`.
+
+## NAG Documentation
+
+GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html)
+
+## Calls to `C05ADF`
+
+C05ADF locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
+```Fortran
+SUBROUTINE C05ADF(A, B, EPS, ETA, F, X, IFAIL)
+INTEGER IFAIL
+real A, B, EPS, ETA, F, X
+EXTERNAL F
+```
 
 ## Calls to `D02BBF`
 
@@ -82,3 +98,8 @@ The documentation, Mark 24, says, "`D02PEF` solves an initial value problem for 
 ## RKSUITE - a suite of Runde-Kutta codes
 
 [RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation is also downloaded.
+
+
+
+
+
