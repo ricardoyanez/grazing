@@ -1,11 +1,10 @@
 
 # GRAZING
-
-Replacing NAG routines for free or open-source alternatives
+[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/): Replacing NAG routines for free or open-source alternatives
 
 ## NAG Documentation
 
-[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
+GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
 
 ## Environment variables
 
