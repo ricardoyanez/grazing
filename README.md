@@ -33,7 +33,7 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-This function is replaced by [Numerical Recipes](#NR) ZBRENT. Necessary changes to ZBRENT are distributed as a patch.
+This function is replaced by [Numerical Recipes](#Numerical Recipes in FORTRAN 77) ZBRENT. Necessary changes to ZBRENT are distributed as a patch.
 
 ## Calls to `D02BBF`
 
@@ -90,7 +90,7 @@ The documentation, Mark 24, says, "`D02PEF` solves an initial value problem for 
 
 [RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation is also downloaded.
 
-## [NR]Numerical Recipes in FORTRAN 77
+## Numerical Recipes in FORTRAN 77
 
 Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by W. H. Press, B. P. Flannery, S. A. Teukolsky and W. T. Vetterling is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, I will distribute patches when a Numerical Recipe code is used. I will assume any interested person in GRAZING has a copy of the excellent book.
 
