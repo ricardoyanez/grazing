@@ -19,7 +19,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-#include <time.h>
+
+#include <stdio.h>
 
 /*
  * X05BAF returns the amount of processor time used since an unspecified 
@@ -30,7 +31,9 @@
  *
  */
 
-void _x05baf_(double *elaps) {
-  *elaps = (double)clock()/CLOCKS_PER_SEC;
-  return;
+#include <time.h>
+
+double c_x05baf_() {
+  return (double)clock()/CLOCKS_PER_SEC;
 }
+
