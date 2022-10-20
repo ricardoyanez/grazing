@@ -43,54 +43,50 @@ Necessary changes to ZBRENT are distributed as a patch (`zbrent.for.patch`).
 
 ## Calls to `D02BBF`
 
-NAG Library Documetation for Mark 18 does not have any information about `D02BBF`. It appears `D02BBF` has been replaced since Mark 17. This [web page](https://wwwafs.portici.enea.it/software/libnag/nagdoc_fl24/html/GENINT/replace.html) contains advice. It literally says,
+NAG Library Documentation for Mark 18 does not have any information about `D02BBF`. It appears `D02BBF` has been replaced since Mark 17. This [web page](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/html/genint/fl_replace.html) contains advice. It literally says,
 
 **D02BAF**
 
 Withdrawn at Mark 18.  
-Replaced by D02PEF and associated D02P routines.
+Replaced by [D02PCF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pcf.pdf) and associated D02P routines.
 
 Old:  
 ```Fortran
-CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
+      CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
 ```
 New:  
 ```Fortran
-THRES(1:N) = TOL
-CALL D02PQF(N,X,XEND,Y,TOL,THRESH,  &
-            -2,0.0D0,IWSAV,RWSAV,IFAIL)
-CALL D02PEF(F2,N,XEND,X,Y,YP,YMAX,  &
-            IUSER,RUSER,IWSAV,RWSAV,IFAIL)
+     CALL D02PVF(N,X,Y,XEND,TOL,THRES,2,'usualtask',.FALSE.,
+    +            0.0D0,W,20*N,IFAIL)
+     ... set XWANT ...
+  10 CONTINUE
+     CALL D02PCF(FCN,XWANT,X,Y,YP,YMAX,W,IFAIL)
+     IF (XWANT.LT.XEND) THEN
+       ... reset XWANT ...
+       GO TO 10
+     ENDIF
+
+
 ```
-`IWSAV` is an integer array of length 130 and `RWSAV` is a real array of length 350+32×`N`.
+[`D02PVF`](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pvf.pdf) is a setup routine for `D02PCF`.
 
-`IUSER` and `RUSER` are arrays available to allow you to pass information to the user defined routine `F2`.
+`D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods".
 
-The definition of `F2` can use the original routine `FCN` as follows:  
-```Fortran
-   SUBROUTINE F2(T,N,Y,YP,IUSER,RUSER)
-!     .. Scalar Arguments ..
-      Real (Kind=wp), Intent (In)      :: t
-      Integer, Intent (In)             :: n
-!     .. Array Arguments ..
-      Real (Kind=wp), Intent (Inout)   :: ruser(1)
-      Real (Kind=wp), Intent (In)      :: y(n)
-      Real (Kind=wp), Intent (Out)     :: yp(n)
-      Integer, Intent (Inout)          :: iuser(1)
-!     .. Procedure Arguments ..
-      External                         :: fcn
-!     .. Executable Statements ..
-      Continue
+Parameters deduced from the replacement routines:
 
-      Call fcn(t,y,yp)
+`X` is the initial value of the independent variable.  
+`XEND` is the final value of the independent variable.  
+`N` is the number of ODEs in the system.  
+`Y` is the initial values of the solutions at the initial value.  
+`TOL` is a relative error tolerance.  
+`IRELAB` is always 0 when called from GRAZING. Its usage is unknown.  
+`FCN` is a user supplied external function and must evaluate f<sub>i</sub>.  
+`OUTPUT` is a user supplied external function.  
+`W` is an array of dimension (4,7).  
+`IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
-      Return
-    End Subroutine F2
-```
 
-The replacements `D02PQF` and `D02PEF` appeared starting from [Mark 24](https://www.nag.com/numeric/nl/nagdoc_24/nagdoc_fl24/html/d02/d02conts.html). `D02PQF` is a setup routine for `D02PEF`.
 
-The documentation, Mark 24, says, "`D02PEF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods."
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
