@@ -33,7 +33,7 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-This function is replaced by [Numerical Recipes](#Numerical Recipes in FORTRAN 77) ZBRENT. Necessary changes to ZBRENT are distributed as a patch.
+This function is replaced by [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT. Necessary changes to ZBRENT are distributed as a patch.
 
 ## Calls to `D02BBF`
 
