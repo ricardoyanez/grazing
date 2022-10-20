@@ -91,9 +91,9 @@ The documentation, Mark 24, says, "`D02PEF` solves an initial value problem for 
 
 ## Numerical Recipes in FORTRAN 77
 
-Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by W. H. Press, B. P. Flannery, S. A. Teukolsky and W. T. Vetterling is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, I will distribute patches when a Numerical Recipe code is used. I will assume any interested person in GRAZING has a copy of the excellent book.
+Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, I will distribute patches when a Numerical Recipe code is used. I will assume any interested person in GRAZING has a copy of this excellent book.
 
-The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Since 
+The codes can be found in [GitHub](https://github.com/wangvei/nrf77).
 
 ## GNU Scientific Library (GSL)
 
