@@ -39,7 +39,7 @@ FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 ```
 which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
 
-Necessary changes to ZBRENT are distributed as a patch.
+Necessary changes to ZBRENT are distributed as a patch (`zbrent.for.patch`).
 
 ## Calls to `D02BBF`
 
