@@ -37,7 +37,7 @@ This function is replaced by the [Numerical Recipes](#numerical-recipes-in-fortr
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
 ```
-uses the Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
+which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
 
 Necessary changes to ZBRENT are distributed as a patch.
 
