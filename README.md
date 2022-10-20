@@ -45,6 +45,7 @@ Necessary changes to ZBRENT are distributed as a patch (`zbrent.for.patch`).
 
 NAG Library Documentation for Mark 18 does not have any information about `D02BBF`. It appears `D02BBF` has been replaced since Mark 17. This [web page](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/html/genint/fl_replace.html) contains advice. It literally says,
 
+`
 **D02BAF**
 
 Withdrawn at Mark 18.  
@@ -65,7 +66,7 @@ New:
        ... reset XWANT ...
        GO TO 10
      ENDIF
-
+`
 
 ```
 [D02PVF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pvf.pdf) is a setup routine for `D02PCF`.
