@@ -5,7 +5,7 @@ Replacing NAG routines for free or open-source alternatives
 
 ## NAG Documentation
 
-GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
+[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
 
 ## Environment variables
 
@@ -33,7 +33,7 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-This function is replaced by Numerical Recipes ZBRENT. Necassary Changes to ZBRENT are distributed as a patch.
+This function is replaced by Numerical Recipes ZBRENT. Necessary changes to ZBRENT are distributed as a patch.
 
 ## Calls to `D02BBF`
 
