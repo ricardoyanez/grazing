@@ -8,6 +8,7 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * C05ADF replaced with Numerical Recipes ZBRENT
   * Download RKSUITE Fortran code and compile into shared library.
   * Download rksuite.doc and convert to PDF.
-  * D02BBF substituted with RKSUITE
+  * D02BBF substituted with RKSUITE.
+  * S15ADF substituted with erfc().
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700
