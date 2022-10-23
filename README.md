@@ -24,7 +24,7 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 
 `GRAZ_DIR` defines the path to the directory where the data files are located. I personally put the data files in `/usr/local/share/grazing/`.
 
-Changes to `fys_lib.f` and `emass_s.f`, where the data files are opened and read, are distributed as a patches (`fys_lib.f.patch` and emass_s.f.patch, respectively).
+Changes to `fys_lib.f` and `emass_s.f`, where the data files are opened and read, are distributed as a patches (`fys_lib.f.patch` and `emass_s.f.patch`, respectively).
 
 ## Calls to `C05ADF`
 
