@@ -1,0 +1,10 @@
+--- emass_s.f.orig	2022-10-16 15:19:16.629196562 -0700
++++ emass_s.f	2022-10-23 07:19:29.715981189 -0700
+@@ -19,6 +19,7 @@
+ c
+ cccccc      data fnix /'/home/nanni/grazing/mtablex.dat'/
+ c
++      call getenv("GRAZ_MASS_NIX",mass_nix)
+       open(unit=17,file=mass_nix,status='old')
+ c
+       irec = ierr
