@@ -24,7 +24,7 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 
 `GRAZ_DIR` defines the path to the directory where the data files are located. I personally put the data files in `/usr/local/share/grazing/`.
 
-Changes to `fys_lib.f`, where the data files are opened and read, are distributed as a patch (`fys_lib.f.patch`).
+Changes to `fys_lib.f` and `emass_s.f`, where the data files are opened and read, are distributed as a patches (`fys_lib.f.patch` and emass_s.f.patch, respectively).
 
 ## Calls to `C05ADF`
 
@@ -41,9 +41,7 @@ This function is replaced by the [Numerical Recipes](#numerical-recipes-in-fortr
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
 ```
-which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
-
-Necessary changes to ZBRENT are distributed as a patch (`zbrent.for.patch`).
+which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`. Necessary changes to ZBRENT are distributed as a patch (`zbrent.for.patch`).
 
 ## Calls to `D02BBF`
 
@@ -74,7 +72,7 @@ New:
 ```
 [D02PVF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pvf.pdf) is a setup routine for `D02PCF`.
 
-`D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods".
+`D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
 
 Parameters deduced from the replacement routines:
 
@@ -89,8 +87,19 @@ Parameters deduced from the replacement routines:
 `W` is an array of dimension (4,7) when called from GRAZING.  
 `IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
+## S15ADF
 
+S15ADF returns the value of the complementary error function, erfc x, via the routine name.
 
+```Fortran
+real FUNCTION S15ADF(X, IFAIL)
+INTEGER IFAIL
+real X
+```
+
+On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
+
+This routine is substituted with a C function that calls erfc().
 
 ## Numerical Recipes in FORTRAN 77
 
