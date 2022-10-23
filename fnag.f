@@ -22,11 +22,11 @@ C
 C     NAG X05BAF returns the amount of processor time used since an unspecified
 C     previous time, via the routine name.
 C
-C     THe C function c_x05baf is used to substitute X05BAF by calling clock().
+C     The C function c_x05baf is used to substitute X05BAF by calling clock().
 C
       REAL*8 FUNCTION X05BAF()
       IMPLICIT REAL*8(A-H,O-Z)
-      X05BAF = C_X05BAF()
+      X05BAF = c_x05baf()
 c$$$      write(*,*) '*** call to X05BAF=',X05BAF
       RETURN
       END
@@ -72,6 +72,20 @@ C
 c$$$      write(*,*) '*** call to D02BBF'
       return
       end
+
+C     S15ADF returns the value of the complementary error function, erfc x,
+C     via the routine name.
+C
+C     The C function c_s15adf is used to substitute S15ADF by calling erfc().
+C
+      real*8 function S15ADF(X,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      S15ADF = c_s15adf(x,ifail)
+c$$$      write(*,*) '*** call to S15ADF',X,S15ADF
+      return
+      end
+
+
 
       subroutine C05AVF(X,FX,H,BOUNDL,BOUNDU,Y,C,IND,IFAIL)
       write(*,*) '*** call to C05AVF'
@@ -131,12 +145,6 @@ c$$$      write(*,*) '*** call to D02BBF'
       
       real function S14ABF(X,IFAIL)
       write(*,*) '*** call to S14ABF'
-      stop
-      return
-      end
-
-      real function S15ADF(X,IFAIL)
-      write(*,*) '*** call to S15ADF'
       stop
       return
       end

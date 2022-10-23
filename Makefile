@@ -53,34 +53,34 @@ OBJ=grazing_9.o \
 SRC=$(OBJ:%.o=%.f)
 
 grazing: $(SRC) grazing.o libnag.so
-	$(F77) $(FFLAGS) $(OBJ) libnag.so -o grazing
+	$(F77) $(FFLAGS) $(OBJ) libnag.so -o grazing_9r -lnrf77 -lm
 
 grazing.o: $(SRC)
 	$(F77) $(FFLAGS) -c $(SRC)
 
-NAG_OBJ=x05baf.o
+libnag.so: fnag.f cnag.c rksuite.o nrf77.so
+	$(F77) $(FFLAGS) -fPIC -c fnag.f
+	$(CC) $(CFLAGS) -fPIC -c cnag.c
+	$(F77) -shared -o libnag.so libnrf77.so fnag.o cnag.o rksuite.o
 
-NAG_SRC=$(NAG_OBJ:%.o=%.c)
-
-libnag.so: nag.f d02bbf.f90 $(NAG_SRC) rksuite.o
-	$(F77) $(FFLAGS) -fPIC -c nag.f
-	$(F90) $(FFLAGS) -fPIC -c d02bbf.f90
-	$(CC) $(CFLAGS) -fPIC -c $(NAG_SRC)
-	$(F77) -shared -o libnag.so nag.o d02bbf.o rksuite.o $(NAG_OBJ)
-
-rksuite.o:
+rksuite.o: rksuite.f
 ifeq (,$(wildcard ./rksuite.pdf))
 	wget https://netlib.sandia.gov/ode/rksuite/rksuite.doc -O rksuite.doc
+	/usr/bin/lowriter --headless --convert-to pdf:writer_pdf_Export rksuite.doc
+	rm -f rksuite.doc
 endif
 ifeq (,$(wildcard ./rksuite.f))
 	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f -O rksuite.f
 endif
 	$(F77) $(FFLAGS) -fPIC -c rksuite.f
-	/usr/bin/lowriter --headless --convert-to pdf:writer_pdf_Export rksuite.doc
-	rm -f rksuite.doc
+
+nrf77.so: zbrent.for
+	$(F77) $(FFLAGS) -fPIC -c zbrent.for
+	$(F77) -shared -o libnrf77.so zbrent.o
 
 patch:
 	diff -Naur fys_lib.f.orig fys_lib.f > fys_lib.f.patch
+	diff -Naur zbrent.for.orig zbrent.for > zbrent.for.patch
 
 clean:
-	rm -f *.o *.so rksuite.f rksuite.pdf
+	rm -f *.o *.so fort.* *~ grazing_9r
