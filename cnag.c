@@ -21,13 +21,14 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
  * X05BAF returns the amount of processor time used since an unspecified 
  * previous time, via the routine name.
  *
- * This wapper uses the C function clock(). Dividing by CLOCKS_PER_SEC
- * gives the number of seconds.
+ * This wapper uses the GNU C Library function clock(). 
+ * Dividing clock() by CLOCKS_PER_SEC gives the processor time in seconds.
  *
  */
 
@@ -37,3 +38,25 @@ double c_x05baf_() {
   return (double)clock()/CLOCKS_PER_SEC;
 }
 
+/*
+ * S15ADF returns the value of the complementary error function, erfc x,
+ * via the routine name.
+ *
+ * This wapper uses the GNU C Library function erfc().
+ *
+ */
+
+#include <math.h>
+#include <fenv.h>
+
+double c_s15adf_(double *x, int *ifail) {
+
+  double f;
+  feclearexcept(FE_ALL_EXCEPT);
+  f = erfc(*x);
+  *ifail = 0;
+  if ( fetestexcept(FE_INVALID|FE_DIVBYZERO|FE_OVERFLOW|FE_UNDERFLOW) ) {
+    *ifail = 1;
+  }
+  return f;
+}
