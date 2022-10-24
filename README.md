@@ -87,7 +87,7 @@ Parameters deduced from the replacement routines:
 `W` is an array of dimension (4,7) when called from GRAZING.  
 `IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
-The `D02BBF` suboutine is replaced by RKSUITE.
+The `D02BBF` suboutine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
 ## Calls to `S14ABF`
 
