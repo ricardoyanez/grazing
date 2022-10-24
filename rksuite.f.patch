@@ -1,6 +1,6 @@
 --- rksuite.f.orig	1992-04-27 13:23:58.000000000 -0700
-+++ rksuite.f	2022-10-20 18:39:29.610486131 -0700
-@@ -2281,12 +2281,12 @@
++++ rksuite.f	2022-10-23 22:26:58.691084131 -0700
+@@ -2281,19 +2281,19 @@
  C  If you pass copies of RKSUITE on to others, please give them the whole
  C  distribution version of RKSUITE, and in particular, give them a version 
  C  of ENVIRN that does not have the following six statements Commented out.
@@ -19,3 +19,23 @@
  C
  C  The following values are appropriate to IEEE arithmetic with the typical
  C  standard output channel.
+ C
+       OUTCH = 6
+-      MCHEPS = 1.11D-16
+-      DWARF = 2.23D-308
++C      MCHEPS = 1.11D-16
++C      DWARF = 2.23D-308
+ C      
+ C------------------------------------------------------------------------------
+ C  If you have the routines D1MACH and I1MACH on your system, you could
+@@ -2309,8 +2309,8 @@
+ C      .. Executable Statements ..
+ C
+ C      OUTCH = I1MACH(2)
+-C      MCHEPS = D1MACH(3)
+-C      DWARF = D1MACH(1)
++      MCHEPS = C_D1MACH(3)
++      DWARF = C_D1MACH(1)
+ C
+ C  If you have the NAG Fortran Library available on your system, you could 
+ C  replace the preceding statements by the following ones to obtain the 
