@@ -58,17 +58,12 @@ grazing: $(SRC) grazing.o libnag.so
 grazing.o: $(SRC)
 	$(F77) $(FFLAGS) -c $(SRC)
 
-libnag.so: fnag.f cnag.c rksuite.o nrf77.so
+libnag.so: fnag.f cnag.c rksuite.o nrf77.so quadpack.so
 	$(F77) $(FFLAGS) -fPIC -c fnag.f
 	$(CC) $(CFLAGS) -fPIC -c cnag.c
-	$(F77) -shared -o libnag.so libnrf77.so fnag.o cnag.o rksuite.o
+	$(F77) -shared -o libnag.so libnrf77.so libquadpack.so fnag.o cnag.o rksuite.o
 
 rksuite.o: rksuite.f
-ifeq (,$(wildcard ./rksuite.pdf))
-	wget https://netlib.sandia.gov/ode/rksuite/rksuite.doc -O rksuite.doc
-	/usr/bin/lowriter --headless --convert-to pdf:writer_pdf_Export rksuite.doc
-	rm -f rksuite.doc
-endif
 ifeq (,$(wildcard ./rksuite.f))
 	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f -O rksuite.f
 endif
@@ -78,5 +73,9 @@ nrf77.so: zbrent.for
 	$(F77) $(FFLAGS) -fPIC -c zbrent.for
 	$(F77) -shared -o libnrf77.so zbrent.o
 
+quadpack.so:
+	$(MAKE) -C quadpack
+
 clean:
 	rm -f *.o *.so fort.* *~ grazing_9r
+	$(MAKE) -C quadpack clean
