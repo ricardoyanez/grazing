@@ -125,6 +125,10 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 [RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation is also downloaded.
 
+## QUADPACK - numerical integration
+
+[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Ueberhuber, David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/).
+
 ## GNU Scientific Library (GSL)
 
 In Debian, the [GSL library](https://www.gnu.org/software/gsl/) is distributed and installed through the development package `libgsl-dev`.
