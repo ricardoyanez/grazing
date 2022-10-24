@@ -10,5 +10,6 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * Download rksuite.doc and convert to PDF.
   * D02BBF substituted with RKSUITE.
   * S15ADF substituted with erfc().
+  * S14ABF substituted with lgamma().
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700

@@ -87,25 +87,39 @@ Parameters deduced from the replacement routines:
 `W` is an array of dimension (4,7) when called from GRAZING.  
 `IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
-## S15ADF
+## S14ABF
 
-S15ADF returns the value of the complementary error function, erfc x, via the routine name.
+`S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
 
 ```Fortran
-real FUNCTION S15ADF(X, IFAIL)
+REAL FUNCTION S14ABF(X,IFAIL)
 INTEGER IFAIL
-real X
+REAL X
 ```
 
 On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
 
-This routine is substituted with a C function that calls erfc().
+This routine is substituted with a C function that calls `lgamma()`.
+
+## S15ADF
+
+`S15ADF` returns the value of the complementary error function, erfc x, via the routine name.
+
+```Fortran
+REAL FUNCTION S15ADF(X,IFAIL)
+INTEGER IFAIL
+REAL X
+```
+
+On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
+
+This routine is substituted with a C function that calls `erfc()`.
 
 ## Numerical Recipes in FORTRAN 77
 
 Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, I will distribute patches when a Numerical Recipe code is used. I will assume any interested person in GRAZING has a copy of this excellent book.
 
-The codes can be found in [GitHub](https://github.com/wangvei/nrf77).
+The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please refer to GitHub regarding any license issues.
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
