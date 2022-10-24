@@ -117,6 +117,19 @@ On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an erro
 
 The `S15ADF` routine is substituted with a C function that calls `erfc()`.
 
+## Calls to `D01AMF`
+
+`D01AMF` calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
+
+```Fortran
+SUBROUTINE D01AMF(F, BOUND, INF, EPSABS, EPSREL, RESULT, ABSERR,
+1 W, LW, IW, LIW, IFAIL)
+INTEGER INF, LW, IW(LIW), LIW, IFAIL
+real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
+EXTERNAL F
+```
+The `D01AMF` suboutine is replaced by [QUADPACK](#quadpack---numerical-integration).
+
 ## Numerical Recipes in FORTRAN 77
 
 Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, I will distribute patches when a Numerical Recipe code is used. I will assume any interested person in GRAZING has a copy of this excellent book.
@@ -129,15 +142,11 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 ## QUADPACK - numerical integration
 
-[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Überhuber, David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/).
+[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Überhuber and David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/). The Makefile will download the necessary codes from Netlib and compile them for use with GRAZING.
 
 <ins>REFERENCE</ins>
 
 R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
-
-## GNU Scientific Library (GSL)
-
-In Debian, the [GSL library](https://www.gnu.org/software/gsl/) is distributed and installed through the development package `libgsl-dev`.
 
 ## changelog
 
