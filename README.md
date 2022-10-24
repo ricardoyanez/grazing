@@ -30,7 +30,7 @@ Changes to `fys_lib.f` and `emass_s.f`, where the data files are opened and read
 
 ## Calls to `C05ADF`
 
-C05ADF locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
+`C05ADF` locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
 ```Fortran
 SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
 INTEGER IFAIL
@@ -43,7 +43,7 @@ The `C05ADF` subroutine is replaced by the [Numerical Recipes](#numerical-recipe
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
 ```
-which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`. Necessary changes to ZBRENT are distributed as a patch (`zbrent.for.patch`).
+which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`. Necessary changes to ZBRENT are distributed as a patch (`nrf77/zbrent.f.patch`).
 
 ## Calls to `D02BBF`
 
