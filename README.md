@@ -36,7 +36,7 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-This function is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
+The `C05ADF` subroutine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
 ```Fortran
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
@@ -87,6 +87,8 @@ Parameters deduced from the replacement routines:
 `W` is an array of dimension (4,7) when called from GRAZING.  
 `IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
+The `D02BBF` suboutine is replaced by RKSUITE.
+
 ## Calls to `S14ABF`
 
 `S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
@@ -99,7 +101,7 @@ REAL X
 
 On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
 
-This routine is substituted with a C function that calls `lgamma()`.
+The `S14ABF` routine is substituted with a C function that calls `lgamma()`.
 
 ## Calls to `S15ADF`
 
@@ -113,7 +115,7 @@ REAL X
 
 On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
 
-This routine is substituted with a C function that calls `erfc()`.
+The `S15ADF` routine is substituted with a C function that calls `erfc()`.
 
 ## Numerical Recipes in FORTRAN 77
 
@@ -123,16 +125,15 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
-[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore use it to replace the D02PEF NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation is also downloaded.
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore use it to replace the `D02BBF` NAG routine without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch. The documentation is also downloaded.
 
 ## QUADPACK - numerical integration
 
-[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Ueberhuber, David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/).
+[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Überhuber, David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/).
 
 <ins>REFERENCE</ins>
 
 R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
-
 
 ## GNU Scientific Library (GSL)
 
@@ -146,3 +147,6 @@ $ debchange --create --newversion 0.0.1 --package grazing --changelog changelog
 $ debchange -a --changelog changelog
 ```
 
+## License
+
+The wrappers to substitute the NAG libraries in GRAZING were written by Ricardo Yanez <ricardo.yanez@calel.org> and licensed under the GNU General Public License (GPL) version 2 or later.
