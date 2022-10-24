@@ -87,7 +87,7 @@ Parameters deduced from the replacement routines:
 `W` is an array of dimension (4,7) when called from GRAZING.  
 `IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
-## S14ABF
+## Calls to `S14ABF`
 
 `S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
 
@@ -101,7 +101,7 @@ On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an erro
 
 This routine is substituted with a C function that calls `lgamma()`.
 
-## S15ADF
+## Calls to `S15ADF`
 
 `S15ADF` returns the value of the complementary error function, erfc x, via the routine name.
 
