@@ -69,13 +69,13 @@ ifeq (,$(wildcard ./rksuite.f))
 endif
 	$(F77) $(FFLAGS) -fPIC -c rksuite.f
 
-nrf77.so: zbrent.for
-	$(F77) $(FFLAGS) -fPIC -c zbrent.for
-	$(F77) -shared -o libnrf77.so zbrent.o
+nrf77.so:
+	$(MAKE) -C nrf77
 
 quadpack.so:
 	$(MAKE) -C quadpack
 
 clean:
 	rm -f *.o *.so fort.* *~ grazing_9r
+	$(MAKE) -C nrf77 clean
 	$(MAKE) -C quadpack clean
