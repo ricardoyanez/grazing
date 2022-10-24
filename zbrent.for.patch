@@ -1,6 +1,6 @@
 --- zbrent.for.orig	2002-10-14 12:40:58.000000000 -0700
-+++ zbrent.for	2022-10-21 18:39:55.377728518 -0700
-@@ -1,10 +1,16 @@
++++ zbrent.for	2022-10-23 19:36:56.963839282 -0700
+@@ -1,10 +1,17 @@
 -      FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 +      REAL*8 FUNCTION ZBRENT(FUNC,X1,X2,TOL,IFAIL)
 +      IMPLICIT REAL*8(A-H,O-Z)
@@ -13,13 +13,14 @@
 -      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
 +c$$$      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
 +      IF(FB*FA.GT.0.) THEN
++        WRITE(*.*)'WARNING: Root must be bracketed for ZBRENT.'
 +        IFAIL=1
 +        RETURN
 +      ENDIF
        FC=FB
        DO 11 ITER=1,ITMAX
          IF(FB*FC.GT.0.) THEN
-@@ -25,6 +31,7 @@
+@@ -25,6 +32,7 @@
          XM=.5*(C-B)
          IF(ABS(XM).LE.TOL1 .OR. FB.EQ.0.)THEN
            ZBRENT=B
@@ -27,10 +28,13 @@
            RETURN
          ENDIF
          IF(ABS(E).GE.TOL1 .AND. ABS(FA).GT.ABS(FB)) THEN
-@@ -61,6 +68,7 @@
+@@ -60,7 +68,9 @@
+         ENDIF
          FB=FUNC(B)
  11    CONTINUE
-       PAUSE 'ZBRENT exceeding maximum iterations.'
+-      PAUSE 'ZBRENT exceeding maximum iterations.'
++c$$$      PAUSE 'ZBRENT exceeding maximum iterations.'
++      WRITE(*,*)'WARNING: ZBRENT exceeding maximum iterations.'
 +      IFAIL=1
        ZBRENT=B
        RETURN
