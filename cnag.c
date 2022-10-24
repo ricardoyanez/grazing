@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Ricardo Yanez <ricardo.yanez@calel.org>
  *
- * Part of a C wrapper to the NAG Fortran Library
+ * C wrappers to the NAG Fortran Library for GRAZING
  *
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -39,6 +39,29 @@ double c_x05baf_() {
 }
 
 /*
+ * S14ABF returns a value for the logarithm of the Gamma function, ln Γ(x),
+ * via the routine name.
+ *
+ * This wapper uses the GNU C Library function lgamma().
+ *
+ */
+
+#include <math.h>
+#include <fenv.h>
+
+double c_s14abf_(double *x, int *ifail) {
+
+  double f;
+  feclearexcept(FE_ALL_EXCEPT);
+  f = lgamma(*x);
+  *ifail = 0;
+  if ( fetestexcept(FE_DIVBYZERO|FE_OVERFLOW) ) {
+    *ifail = 1;
+  }
+  return f;
+}
+
+/*
  * S15ADF returns the value of the complementary error function, erfc x,
  * via the routine name.
  *
@@ -46,16 +69,13 @@ double c_x05baf_() {
  *
  */
 
-#include <math.h>
-#include <fenv.h>
-
 double c_s15adf_(double *x, int *ifail) {
 
   double f;
   feclearexcept(FE_ALL_EXCEPT);
   f = erfc(*x);
   *ifail = 0;
-  if ( fetestexcept(FE_INVALID|FE_DIVBYZERO|FE_OVERFLOW|FE_UNDERFLOW) ) {
+  if ( fetestexcept(FE_UNDERFLOW) ) {
     *ifail = 1;
   }
   return f;

@@ -78,9 +78,5 @@ nrf77.so: zbrent.for
 	$(F77) $(FFLAGS) -fPIC -c zbrent.for
 	$(F77) -shared -o libnrf77.so zbrent.o
 
-patch:
-	diff -Naur fys_lib.f.orig fys_lib.f > fys_lib.f.patch
-	diff -Naur zbrent.for.orig zbrent.for > zbrent.for.patch
-
 clean:
 	rm -f *.o *.so fort.* *~ grazing_9r
