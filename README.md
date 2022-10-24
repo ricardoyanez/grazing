@@ -125,7 +125,7 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
-[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore be used to replace `D02BBF` without distributing it. The Makefile will download it from the site and compile it for use with GRAZING. It any changes are needed, they will be distributed as a patch (`rksuite.f.patch`).
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. This is perhaps intentional. It will therefore be used to replace `D02BBF` without distributing it. The Makefile will download the suite from the forementioned site and compile it for use with GRAZING. If any changes are needed, they will be distributed as a patch (`rksuite.f.patch`).
 
 ## QUADPACK - numerical integration
 
