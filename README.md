@@ -149,4 +149,4 @@ $ debchange -a --changelog changelog
 
 ## License
 
-The wrappers to substitute the NAG libraries in GRAZING were written by Ricardo Yanez <ricardo.yanez@calel.org> and licensed under the GNU General Public License (GPL) version 2 or later.
+The wrappers to substitute the NAG libraries in GRAZING were written by Ricardo Yanez &lt;ricardo.yanez@calel.org&gt; and licensed under the GNU General Public License (GPL) version 2 or later.
