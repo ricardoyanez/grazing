@@ -129,6 +129,11 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 [QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Ueberhuber, David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/).
 
+REFERENCE
+
+R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
+
+
 ## GNU Scientific Library (GSL)
 
 In Debian, the [GSL library](https://www.gnu.org/software/gsl/) is distributed and installed through the development package `libgsl-dev`.
