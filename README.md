@@ -56,21 +56,19 @@ Replaced by [D02PCF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pcf
 
 Old:  
 ```Fortran
-      CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
+CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
 ```
 New:  
 ```Fortran
-     CALL D02PVF(N,X,Y,XEND,TOL,THRES,2,'usualtask',.FALSE.,
-    +            0.0D0,W,20*N,IFAIL)
-     ... set XWANT ...
-  10 CONTINUE
-     CALL D02PCF(FCN,XWANT,X,Y,YP,YMAX,W,IFAIL)
-     IF (XWANT.LT.XEND) THEN
-       ... reset XWANT ...
-       GO TO 10
-     ENDIF
-
-
+CALL D02PVF(N,X,Y,XEND,TOL,THRES,2,'usualtask',.FALSE.,
++            0.0D0,W,20*N,IFAIL)
+... set XWANT ...
+10 CONTINUE
+CALL D02PCF(FCN,XWANT,X,Y,YP,YMAX,W,IFAIL)
+IF (XWANT.LT.XEND) THEN
+... reset XWANT ...
+GO TO 10
+ENDIF
 ```
 [D02PVF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pvf.pdf) is a setup routine for `D02PCF`.
 
