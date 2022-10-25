@@ -66,7 +66,7 @@ New:
 10 CONTINUE
    CALL D02PCF(FCN,XWANT,X,Y,YP,YMAX,W,IFAIL)
    IF (XWANT.LT.XEND) THEN
-      ... reset XWANT ...
+     ... reset XWANT ...
      GO TO 10
    ENDIF
 
@@ -124,8 +124,7 @@ The `S15ADF` routine is substituted with a C function that calls `erfc()`.
 `D01AMF` calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
 
 ```Fortran
-SUBROUTINE D01AMF(F, BOUND, INF, EPSABS, EPSREL, RESULT, ABSERR,
-1 W, LW, IW, LIW, IFAIL)
+SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,W,LW,IW,LIW,IFAIL)
 INTEGER INF, LW, IW(LIW), LIW, IFAIL
 real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
 EXTERNAL F
