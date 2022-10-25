@@ -1,5 +1,5 @@
 F77=gfortran
-FFLAGS=-g
+FFLAGS=-g -std=legacy
 
 SRC=rksuite.f
 

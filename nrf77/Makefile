@@ -1,7 +1,5 @@
 F77=gfortran
-FFLAGS=-g
-
-EXIT=$(shell exit 1)
+FFLAGS=-g -std=legacy
 
 SRC=zbrent.f
 

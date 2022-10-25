@@ -1,7 +1,5 @@
 F77=gfortran
-F90=gfortran
-#FFLAGS=-finit-local-zero -fno-automatic -fno-backslash -fdollar-ok
-FFLAGS=-g
+FFLAGS=-g -std=legacy
 
 CC=gcc
 CFLAGS=-g
@@ -52,22 +50,19 @@ OBJ=grazing_9.o \
 
 SRC=$(OBJ:%.o=%.f)
 
-grazing: $(SRC) grazing.o libnag.so
-	$(F77) $(FFLAGS) $(OBJ) libnag.so -o grazing_9r -lnrf77 -lm
+grazing: $(SRC) grazing.o libnag.so nrf77.so rksuite.so quadpack.so
+	$(F77) $(FFLAGS) -o grazing_9r $(OBJ) -L. -lnag -lnrf77 -lrksuite -lquadpack -lm
 
 grazing.o: $(SRC)
 	$(F77) $(FFLAGS) -c $(SRC)
 
-libnag.so: fnag.f cnag.c rksuite.o nrf77.so quadpack.so
+libnag.so: fnag.f cnag.c
 	$(F77) $(FFLAGS) -fPIC -c fnag.f
 	$(CC) $(CFLAGS) -fPIC -c cnag.c
-	$(F77) -shared -o libnag.so libnrf77.so libquadpack.so fnag.o cnag.o rksuite.o
+	$(F77) -shared -o libnag.so fnag.o cnag.o
 
-rksuite.o: rksuite.f
-ifeq (,$(wildcard ./rksuite.f))
-	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f -O rksuite.f
-endif
-	$(F77) $(FFLAGS) -fPIC -c rksuite.f
+rksuite.so:
+	$(MAKE) -C rksuite
 
 nrf77.so:
 	$(MAKE) -C nrf77
@@ -78,4 +73,5 @@ quadpack.so:
 clean:
 	rm -f *.o *.so fort.* *~ grazing_9r
 	$(MAKE) -C nrf77 clean
+	$(MAKE) -C rksuite clean
 	$(MAKE) -C quadpack clean
