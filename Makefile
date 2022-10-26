@@ -54,6 +54,8 @@ grazing: $(SRC) grazing.o libnag.so nrf77.so rksuite.so quadpack.so
 	$(F77) $(FFLAGS) -o grazing_9r $(OBJ) -L. -lnag -lnrf77 -lrksuite -lquadpack -lm
 
 grazing.o: $(SRC)
+	patch -Nur /dev/null fys_lib.f fys_lib.f.patch || true
+	patch -Nur /dev/null emass_s.f emass_s.f.patch || true
 	$(F77) $(FFLAGS) -c $(SRC)
 
 libnag.so: fnag.f cnag.c
