@@ -1,5 +1,5 @@
 F77=gfortran
-FFLAGS=-g -std=legacy
+FFLAGS=-g -std=legacy -fno-automatic
 
 CC=gcc
 CFLAGS=-g

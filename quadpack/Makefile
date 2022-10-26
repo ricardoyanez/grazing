@@ -1,5 +1,5 @@
 F77=gfortran
-FFLAGS=-g -std=legacy
+FFLAGS=-g -std=legacy -fno-automatic
 
 SRC=dqagi.f dqagie.f dqelg.f dqk15i.f dqpsrt.f d1mach.f i1mach.f xerror.f \
     xerrwv.f xerprt.f xersav.f xerabt.f xerctl.f xgetua.f j4save.f s88fmt.f \
