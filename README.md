@@ -38,12 +38,39 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-The `C05ADF` subroutine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
+The `C05ADF` routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
 ```Fortran
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
 ```
 which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`. Necessary changes to ZBRENT are distributed as a patch (`nrf77/zbrent.f.patch`).
+
+## Calls to `D01AMF`
+
+`D01AMF` calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
+
+```Fortran
+SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,W,LW,IW,LIW,IFAIL)
+INTEGER INF, LW, IW(LIW), LIW, IFAIL
+real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
+EXTERNAL F
+```
+The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `QAWFE`.
+
+## Calls to `D01ASF`
+
+`D01ASF` calculates an approximation to the sine or the cosine transform of a function g over [a, ∞) for a user-specified value of ω.
+
+```Fortran
+ SUBROUTINE D01ASF(G,A,OMEGA,KEY,EPSABS,RESULT,ABSERR,
+1 LIMLST,LST,ERLST,RSLST,IERLST,W,LW,IW,LIW,IFAIL)
+ INTEGER KEY, LIMLST, LST, IERLST(LIMLST), LW, IW(LIW),
+1 LIW, IFAIL
+ real G, A, OMEGA, EPSABS, RESULT, ABSERR,
+1 ERLST(LIMLST), RSLST(LIMLST), W(LW)
+ EXTERNAL G
+```
+The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `DQAGI`.
 
 ## Calls to `D02BBF`
 
@@ -89,7 +116,7 @@ Parameters deduced from the replacement routines:
 `W` is an array of dimension (4,7) when called from GRAZING.  
 `IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
-The `D02BBF` suboutine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
+The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
 ## Calls to `S14ABF`
 
@@ -118,18 +145,6 @@ REAL X
 On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
 
 The `S15ADF` routine is substituted with a C function that calls `erfc()`.
-
-## Calls to `D01AMF`
-
-`D01AMF` calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
-
-```Fortran
-SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,W,LW,IW,LIW,IFAIL)
-INTEGER INF, LW, IW(LIW), LIW, IFAIL
-real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
-EXTERNAL F
-```
-The `D01AMF` suboutine is replaced by [QUADPACK](#quadpack---numerical-integration), subroutine `DQAGI`.
 
 ## Numerical Recipes in FORTRAN 77
 
