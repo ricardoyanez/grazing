@@ -80,3 +80,29 @@ double c_s15adf_(double *x, int *ifail) {
   }
   return f;
 }
+
+/*
+ * This function is a C port of the FORTRAN subroutine D1MACH used by RKSUITE.
+ * A FORTRAN version of D1MACH can be found in Netlib.
+ */
+
+#include <float.h>
+
+double c_d1mach_(int *i) {
+  switch (*i) {
+  case 1:
+    return DBL_MIN;
+  case 2:
+    return DBL_MAX;
+  case 3:
+    return DBL_EPSILON/(double)FLT_RADIX;
+  case 4:
+    return DBL_EPSILON;
+  case 5:
+    return log10((double)FLT_RADIX);
+  default:
+    fprintf(stderr,"Invalid argument: d1mach(%ld)\n",*i);
+    exit(EXIT_FAILURE);
+  }
+  return EXIT_SUCCESS;
+}

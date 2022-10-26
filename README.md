@@ -129,7 +129,7 @@ INTEGER INF, LW, IW(LIW), LIW, IFAIL
 real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
 EXTERNAL F
 ```
-The `D01AMF` suboutine is replaced by [QUADPACK](#quadpack---numerical-integration).
+The `D01AMF` suboutine is replaced by [QUADPACK](#quadpack---numerical-integration), subroutine `DQAGI`.
 
 ## Numerical Recipes in FORTRAN 77
 

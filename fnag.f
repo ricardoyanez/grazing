@@ -18,13 +18,13 @@ C     You should have received a copy of the GNU General Public License
 C     along with this program; if not, write to the Free Software
 C     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 C
-C
+C     ------------------------------------------------------------------------
+
 C     NAG C05ADF locates a zero of a continuous function in a given interval
 C     by a combination of the methods of linear interpolation, extrapolation
 C     and bisection.
-
 C
-C     The Numerical Recipes ZBRENT function is used to substitute C05ADF
+C     The Numerical Recipes ZBRENT function is used to substitute C05ADF.
 C
       SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
@@ -34,12 +34,28 @@ c$$$      write(*,*) '*** call to C05ADF',X,F(X)
       RETURN
       END
 
+C     D01AMF calculates an approximation to the integral of a function f(x)
+C     over an infinite or semi-infinite interval.
+C
+C     The QUADPACK subroutine DQAGI is used to substitute D01AMF.
+C
+      SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,
+     +     W,LW,IW,LIW,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      EXTERNAL F
+      INTEGER NAVAL,LAST
+      CALL DQAGI(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,NAVAL,
+     +     IFAIL,LIW,LW,LAST,IW,W)
+c$$$      write(*,*) '*** call to D01AMF',RESULT,IFAIL
+      RETURN
+      END
+
 C     D02BBF solves an initial value problem for a first-order system of
 C     ordinary differential equations using Runge-Kutta methods.
 C
-C     RKSUITE is used to substitute D02BBF
+C     RKSUITE is used to substitute D02BBF.
 C
-      subroutine D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
+      SUBROUTINE D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       EXTERNAL FCN
       DIMENSION Y(N),YPGOT(N),YMAX(N)
@@ -58,32 +74,32 @@ C
         IFAIL=1
       ENDIF
 c$$$      write(*,*) '*** call to D02BBF'
-      return
-      end
+      RETURN
+      END
 
 C     S14ABF returns a value for the logarithm of the Gamma function,
 C     ln Γ(x), via the routine name.
 C
 C     The C function c_s14abf is used to substitute S14ABF by calling lgamma().
 C
-      real*8 function S14ABF(X,IFAIL)
+      REAL*8 FUNCTION S14ABF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       S14ABF = c_s14abf(x,ifail)
 c$$$      write(*,*) '*** call to S14ABF',X,S14ABF
-      return
-      end
+      RETURN
+      END
 
 C     S15ADF returns the value of the complementary error function, erfc x,
 C     via the routine name.
 C
 C     The C function c_s15adf is used to substitute S15ADF by calling erfc().
 C
-      real*8 function S15ADF(X,IFAIL)
+      REAL*8 FUNCTION S15ADF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       S15ADF = c_s15adf(x,ifail)
 c$$$      write(*,*) '*** call to S15ADF',X,S15ADF
-      return
-      end
+      RETURN
+      END
 
 C     NAG X05BAF returns the amount of processor time used since an unspecified
 C     previous time, via the routine name.
@@ -127,13 +143,6 @@ c$$$      write(*,*) '*** call to X05BAF=',X05BAF
       subroutine D01ASF(G,A,OMEGA,KEY,EPSABS,RESULT,ABSERR,
      &     LIMLST,LST,ERLST,RSLST,IERLST,W,LW,IW,LIW,IFAIL)
       write(*,*) '*** call to D01ASF'
-      stop
-      return
-      end
-
-      subroutine D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,
-     &     W,LW,IW,LIW,IFAIL)
-      write(*,*) '*** call to D01AMF'
       stop
       return
       end
