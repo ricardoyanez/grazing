@@ -148,7 +148,7 @@ The `S15ADF` routine is substituted with a C function that calls `erfc()`.
 
 ## Calls to `S18DEF`
 
-S18DEF returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
+`S18DEF` returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
 ν and n = 0, 1, . . . , N − 1, with an option for exponential scaling.
 
 ```Fortran
@@ -159,6 +159,7 @@ complex Z, CY(N)
 CHARACTER∗1 SCALE
 ```
 
+The `S18DEF` routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions).
 
 ## Numerical Recipes in FORTRAN 77
 
@@ -178,6 +179,13 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
 
+## Amos - Bessel Functions
+
+The D. Amos routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/).
+
+<ins>REFERENCE</ins>
+
+Amos, D. E. (1986) Algorithm 644: A portable package for Bessel functions of a complex argument and nonnegative order. *ACM Trans. Math. Software 12 265–273*.
 ## changelog
 
 This project uses debchange to create and manage the changelog,
