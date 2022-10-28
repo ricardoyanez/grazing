@@ -55,7 +55,7 @@ INTEGER INF, LW, IW(LIW), LIW, IFAIL
 real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
 EXTERNAL F
 ```
-The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `QAWFE`.
+The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `DQAGI`.
 
 ## Calls to `D01ASF`
 
@@ -70,7 +70,7 @@ The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 1 ERLST(LIMLST), RSLST(LIMLST), W(LW)
  EXTERNAL G
 ```
-The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `DQAGI`.
+The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `QAWFE`.
 
 ## Calls to `D02BBF`
 
@@ -123,7 +123,7 @@ The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-
 `S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
 
 ```Fortran
-REAL FUNCTION S14ABF(X,IFAIL)
+REAL FUNCTION S14ABF(X, IFAIL)
 INTEGER IFAIL
 REAL X
 ```
@@ -145,6 +145,20 @@ REAL X
 On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
 
 The `S15ADF` routine is substituted with a C function that calls `erfc()`.
+
+## Calls to `S18DEF`
+
+S18DEF returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
+ν and n = 0, 1, . . . , N − 1, with an option for exponential scaling.
+
+```Fortran
+SUBROUTINE S18DEF(FNU,Z,N,SCALE,CY,NZ,IFAIL)
+INTEGER N, NZ, IFAIL
+real FNU
+complex Z, CY(N)
+CHARACTER∗1 SCALE
+```
+
 
 ## Numerical Recipes in FORTRAN 77
 
