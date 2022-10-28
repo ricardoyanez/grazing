@@ -76,7 +76,7 @@ The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 
 NAG Library Documentation for Mark 18 does not have any information about `D02BBF`. It appears `D02BBF` has been replaced since Mark 17. This [web page](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/html/genint/fl_replace.html) contains advice. It literally says,
 
-**D02BAF**
+**D02BBF**
 
 Withdrawn at Mark 18.  
 Replaced by [D02PCF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pcf.pdf) and associated D02P routines.
