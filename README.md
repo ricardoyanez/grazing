@@ -24,7 +24,7 @@ GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat
 export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23  
 ```
 
-`GRAZ_DIR` defines the path to the directory where the data files are located. I personally put the data files in `/usr/local/share/grazing/`.
+`GRAZ_DIR` defines the path to the directory where the data files are located, for example, `$HOME/grazing/` (user) or `/usr/local/share/grazing/` (system-wide).
 
 Changes to GRAZING are distributed as a patches.
 
@@ -74,47 +74,11 @@ The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 
 ## Calls to `D02BBF`
 
-NAG Library Documentation for Mark 18 does not have any information about `D02BBF`. It appears `D02BBF` has been replaced since Mark 17. This [web page](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/html/genint/fl_replace.html) contains advice. It literally says,
+`D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
 
-**D02BBF**
-
-Withdrawn at Mark 18.  
-Replaced by [D02PCF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pcf.pdf) and associated D02P routines.
-
-Old:  
 ```Fortran
    CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
 ```
-New:  
-```Fortran
-   CALL D02PVF(N,X,Y,XEND,TOL,THRES,2,'usualtask',.FALSE.,
-  +            0.0D0,W,20*N,IFAIL)
-   ... set XWANT ...
-10 CONTINUE
-   CALL D02PCF(FCN,XWANT,X,Y,YP,YMAX,W,IFAIL)
-   IF (XWANT.LT.XEND) THEN
-     ... reset XWANT ...
-     GO TO 10
-   ENDIF
-
-
-```
-[D02PVF](http://fy.chalmers.se/~frtbm/NAG/nagdoc_mk21/pdf/D02/d02pvf.pdf) is a setup routine for `D02PCF`.
-
-`D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
-
-Parameters deduced from the replacement routines:
-
-`X` is the initial value of the independent variable.  
-`XEND` is the final value of the independent variable.  
-`N` is the number of ODEs in the system.  
-`Y` is the initial values of the solutions at the initial value.  
-`TOL` is a relative error tolerance.  
-`IRELAB` is always 0 when called from GRAZING. Its usage is unknown.  
-`FCN` is a user supplied external function and must evaluate f<sub>i</sub>.  
-`OUTPUT` is a user supplied external function.  
-`W` is an array of dimension (4,7) when called from GRAZING.  
-`IFAIL` on entry must be -1, 0 or 1. On exit is equal to 0 unless there is an error.
 
 The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
@@ -128,9 +92,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
-
-The `S14ABF` routine is substituted with a C function that calls `lgamma()`.
+The `S14ABF` routine is substituted with a C wrapper function that calls `lgamma()`.
 
 ## Calls to `S15ADF`
 
@@ -142,9 +104,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-On entry `IFAIL` must be 0, -1 or 1. Upon exit `IFAIL=0` unless there is an error.
-
-The `S15ADF` routine is substituted with a C function that calls `erfc()`.
+The `S15ADF` routine is substituted with a C wrapper function that calls `erfc()`.
 
 ## Calls to `S18DEF`
 

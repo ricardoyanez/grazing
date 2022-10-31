@@ -34,6 +34,8 @@ c$$$      write(*,*) '*** call to C05ADF',X,F(X)
       RETURN
       END
 C
+C     ------------------------------------------------------------------------
+C
 C     D01AMF calculates an approximation to the integral of a function f(x)
 C     over an infinite or semi-infinite interval.
 C
@@ -50,6 +52,8 @@ c$$$      write(*,*) '*** call to D01AMF',RESULT,IFAIL
       RETURN
       END
 C
+C     ------------------------------------------------------------------------
+C
 C     D01ASF calculates an approximation to the sine or the cosine transform
 C     of a function g over [a,inf)
 C
@@ -59,24 +63,20 @@ C
      &     LIMLST,LST,ERLST,RSLST,IERLST,W,LW,IW,LIW,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       EXTERNAL G
-      INTEGER INTEGR,LIMIT,MAXP1
-      DIMENSION ALIST(LIMLST),BLIST(LIMLST),RLIST(LIMLST),ELIST(LIMLST)
-      DIMENSION CHEBMO(10,25)
-      INTEGR=KEY
-      LIMIT=LIMLST
-      MAXP1=10
-      write(*,*)'A ',A
-      write(*,*)'OMEGA ',OMEGA
-      write(*,*)'INTEGR ',INTEGR
-      write(*,*)'EPSABS ',EPSABS
-      write(*,*)'LIMLST ',LIMLST
-      CALL DQAWFE(G,A,OMEGA,INTEGR,EPSABS,LIMLST,LIMIT,MAXP1,
-     &     RESULT,ABSERR,NEVAL,IER,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
+      INTEGER LIMIT,MAXP1
+      PARAMETER (LIMIT=500,MAXP1=50)
+      INTEGER NEVAL,IERLST(LIMLST)
+      DIMENSION ERLST(LIMLST)
+      DIMENSION ALIST(LIMIT),BLIST(LIMIT),RLIST(LIMIT),ELIST(LIMIT)
+      DIMENSION CHEBMO(MAXP1,25)
+      CALL DQAWFE(G,A,OMEGA,KEY,EPSABS,LIMLST,LIMIT,MAXP1,
+     &     RESULT,ABSERR,NEVAL,IFLAG,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
      &     RLIST,ELIST,IORD,NNLOG,CHEBMO)
-      write(*,*) '*** call to D01ASF',RESULT,IER
-      stop
+c$$$      write(*,*) '*** call to D01ASF',RESULT,IFLAG
       RETURN
       END
+C
+C     ------------------------------------------------------------------------
 C
 C     D02BBF solves an initial value problem for a first-order system of
 C     ordinary differential equations using Runge-Kutta methods.
@@ -96,14 +96,15 @@ C
       CALL SETUP(N,X,Y,XEND,TOL,THRES,2,'U',.FALSE.,0.0D0,WORK,32*N,
      +     .TRUE.)
       CALL UT(FCN,XEND,TGOT,Y,YPGOT,YMAX,WORK,UFLAG)
+      IFAIL=1
       IF (UFLAG.EQ.1) THEN
         IFAIL=0
-      ELSE
-        IFAIL=1
       ENDIF
 c$$$      write(*,*) '*** call to D02BBF'
       RETURN
       END
+C
+C     ------------------------------------------------------------------------
 C
 C     S14ABF returns a value for the logarithm of the Gamma function,
 C     ln Γ(x), via the routine name.
@@ -117,6 +118,8 @@ c$$$      write(*,*) '*** call to S14ABF',X,S14ABF
       RETURN
       END
 C
+C     ------------------------------------------------------------------------
+C
 C     S15ADF returns the value of the complementary error function, erfc x,
 C     via the routine name.
 C
@@ -128,6 +131,8 @@ C
 c$$$      write(*,*) '*** call to S15ADF',X,S15ADF
       RETURN
       END
+C
+C     ------------------------------------------------------------------------
 C
 C     S18DEF returns a sequence of values for the modified Bessel functions
 C     for complex z, non-negative orders, with an option for exponential
@@ -153,6 +158,8 @@ C
 c$$$      write(*,*) '*** call to S18DEF',CYR(1),CYI(1),CY(1),IFAIL
       RETURN
       END
+C
+C     ------------------------------------------------------------------------
 C
 C     NAG X05BAF returns the amount of processor time used since an unspecified
 C     previous time, via the routine name.

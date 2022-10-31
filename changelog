@@ -11,6 +11,8 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * D02BBF substituted with RKSUITE.
   * S15ADF substituted with erfc().
   * S14ABF substituted with lgamma().
-  * D01AMF substitute with DQAGI from QUADPACK. -fno-automatic added to FFLAGS
+  * D01AMF substituted with DQAGI from QUADPACK. -fno-automatic added to FFLAGS
+  * S18DEF substituted with Amos Bessel routine ZBESI.
+  * D01ASF substituted with DQAWFE from QUADPACK
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700
