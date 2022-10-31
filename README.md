@@ -26,7 +26,7 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 
 `GRAZ_DIR` defines the path to the directory where the data files are located. I personally put the data files in `/usr/local/share/grazing/`.
 
-Changes to `fys_lib.f` and `emass_s.f`, where the data files are opened and read, are distributed as a patches (`fys_lib.f.patch` and `emass_s.f.patch`, respectively).
+Changes to GRAZING are distributed as a patches.
 
 ## Calls to `C05ADF`
 
@@ -43,7 +43,7 @@ The `C05ADF` routine is replaced by the [Numerical Recipes](#numerical-recipes-i
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
 ```
-which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`. Necessary changes to ZBRENT are distributed as a patch (`nrf77/zbrent.f.patch`).
+which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
 
 ## Calls to `D01AMF`
 
@@ -181,7 +181,7 @@ R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine 
 
 ## Amos - Bessel Functions
 
-The D. Amos routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/).
+The Amos routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/). Necessary changes are distributed as a patch.
 
 <ins>REFERENCE</ins>
 

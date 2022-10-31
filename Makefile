@@ -50,8 +50,8 @@ OBJ=grazing_9.o \
 
 SRC=$(OBJ:%.o=%.f)
 
-grazing: $(SRC) grazing.o libnag.so nrf77.so rksuite.so quadpack.so
-	$(F77) $(FFLAGS) -o grazing_9r $(OBJ) -L. -lnag -lnrf77 -lrksuite -lquadpack -lm
+grazing: $(SRC) grazing.o libnag.so nrf77.so rksuite.so quadpack.so amos.so
+	$(F77) $(FFLAGS) -o grazing_9r $(OBJ) -L. -lnag -lnrf77 -lrksuite -lquadpack -lamos -lm
 
 grazing.o: $(SRC)
 	patch -Nur /dev/null fys_lib.f fys_lib.f.patch || true
@@ -71,6 +71,9 @@ nrf77.so:
 
 quadpack.so:
 	$(MAKE) -C quadpack
+
+amos.so:
+	$(MAKE) -C amos
 
 clean:
 	rm -f *.o *.so fort.* *~ grazing_9r
