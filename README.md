@@ -2,7 +2,22 @@
 # GRAZING
 Replacing NAG routines for free or open-source alternatives.
 
-[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) calculates the outcome of collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther.
+[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/){:target="_blank" rel="noopener"} calculates the outcome of collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther.
+
+# INSTALLATION
+
+1. Download the [GRAZING source](http://personalpages.to.infn.it/~nanni/grazing/grazing_jun2005.tar.gz) (full version).
+2. Untar the source and enter the directory and rename the original makefile,
+```Bash
+$ tar -zxvf grazing_jun2005.tar.gz
+$ cd grazing
+$ mv makefile makefile.orig
+```
+3. Dowload this repo,
+```Bash
+
+```
+
 
 ## NAG Documentation
 
@@ -82,6 +97,18 @@ The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 
 The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
+## Calls to `E01BEF`
+
+`E01BEF` computes a monotonicity-preserving piecewise cubic Hermite interpolant to a set of data points.
+
+```Fortran
+SUBROUTINE E01BEF(N,X,F,D,IFAIL)
+INTEGER N, IFAIL
+real X(N), F(N), D(N)
+```
+
+The `E01BEF` routine is replaced by [PCHIP](#pchip) routine DPCHIM.
+
 ## Calls to `S14ABF`
 
 `S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
@@ -146,6 +173,15 @@ The Amos routines for evaluating Bessel functions are distributed by [Netlib](ht
 <ins>REFERENCE</ins>
 
 Amos, D. E. (1986) Algorithm 644: A portable package for Bessel functions of a complex argument and nonnegative order. *ACM Trans. Math. Software 12 265–273*.
+
+## PCHIP
+
+The PCHIP routines are part of the Slatec Library. They can be found in [Netlib](https://netlib.org/slatec/pchip/).
+
+<ins>REFERENCE</ins>
+
+Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Livermore National Laboratory
+
 ## changelog
 
 This project uses debchange to create and manage the changelog,
