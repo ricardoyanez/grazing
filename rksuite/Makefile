@@ -6,7 +6,7 @@ SRC=rksuite.f
 OBJ=$(SRC:%.f=%.o)
 
 rksuite: $(SRC)
-ifeq (,$(wildcard $(SRC)))
+ifeq (,$(wildcard rksuite.f))
 	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f
 endif
 	patch -Nur /dev/null rksuite.f rksuite.f.patch || true
