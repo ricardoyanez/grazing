@@ -2,22 +2,30 @@
 # GRAZING
 Replacing NAG routines for free or open-source alternatives.
 
-[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/){:target="_blank" rel="noopener"} calculates the outcome of collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther.
+[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) calculates the outcome of collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther.
 
 # INSTALLATION
 
-1. Download the [GRAZING source](http://personalpages.to.infn.it/~nanni/grazing/grazing_jun2005.tar.gz) (full version).
-2. Untar the source and enter the directory and rename the original makefile,
-```Bash
+1. Clone this GitHub repository,
+```
+$ git clone https://github.com/ricardoyanez/grazing.git
+```
+2. Download the [GRAZING source](http://personalpages.to.infn.it/~nanni/grazing/grazing_jun2005.tar.gz) (full version).
+3. Untar the source, enter the source directory and rename the original makefile,
+```
 $ tar -zxvf grazing_jun2005.tar.gz
 $ cd grazing
 $ mv makefile makefile.orig
 ```
-3. Dowload this repo,
-```Bash
-
+4. Put your personal copy of Numerical Recipes ZBRENT routine (`zbrent.f`) in directory `nrf77`.
 ```
-
+$ cp -a [path-to-nummerical recipes]/zbrent.f nrf77/zbrent.f
+```
+5. Make the program
+```
+$ make
+```
+6. Define the environment were the GRAZING data is located. See section about [Data Files](#data-files).
 
 ## NAG Documentation
 
