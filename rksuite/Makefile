@@ -5,7 +5,7 @@ SRC=rksuite.f
 
 OBJ=$(SRC:%.f=%.o)
 
-rksuite: $(SRC)
+rksuite:
 ifeq (,$(wildcard rksuite.f))
 	wget https://netlib.sandia.gov/ode/rksuite/rksuite.f
 endif
