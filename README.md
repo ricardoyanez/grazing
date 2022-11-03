@@ -17,7 +17,7 @@ Replacing NAG routines for free or open-source alternatives.
    $ tar -zxvf grazing_jun2005.tar.gz  
    $ cd grazing  
    $ mv makefile makefile.orig  
-4. Put your personal copy of Numerical Recipes ZBRENT routine (`zbrent.f`) in directory `nrf77`,
+4. Put your personal copy of [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT routine (`zbrent.f`) in directory `nrf77`,
 
    ```  
    $ cp -a [path-to-nummerical recipes]/zbrent.f nrf77/zbrent.f  
@@ -177,7 +177,7 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
-[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. The Makefile will download the suite from the forementioned site and compile it for use with GRAZING. If any changes are needed, they will be distributed as a patch (`rksuite.f.patch`).
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. The Makefile will download the suite from the forementioned site and compile it for use with GRAZING. If any changes are needed, they will be distributed as a patch.
 
 ## QUADPACK - numerical integration
 
@@ -210,6 +210,10 @@ This project uses debchange to create and manage the changelog,
 $ debchange --create --newversion 0.0.1 --package grazing --changelog changelog  
 $ debchange -a --changelog changelog
 ```
+
+## Bug Reporting
+
+Please report bugs to Ricardo Yanez &lt;ricardo.yanez@calel.org&gt;.
 
 ## License
 
