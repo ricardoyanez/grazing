@@ -17,15 +17,12 @@ Replacing NAG routines for free or open-source alternatives.
    $ tar -zxvf grazing_jun2005.tar.gz  
    $ cd grazing  
    $ mv makefile makefile.orig```  
-
 4. Put your personal copy of Numerical Recipes ZBRENT routine (`zbrent.f`) in directory `nrf77`,
-```
-$ cp -a [path-to-nummerical recipes]/zbrent.f nrf77/zbrent.f
-```
+
+   ```$ cp -a [path-to-nummerical recipes]/zbrent.f nrf77/zbrent.f```  
 5. Compile the program,
-```
-$ make
-```
+
+   ```$ make```  
 6. Define the environment were the GRAZING data is located. See section [About Data Files](#about-data-files).
 
 ## NAG Documentation
