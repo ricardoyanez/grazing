@@ -7,11 +7,16 @@ Replacing NAG routines for free or open-source alternatives.
 ## INSTALLATION
 
 1. Clone this GitHub repository,
-...```$ git clone https://github.com/ricardoyanez/grazing.git```
+
+...
+```
+$ git clone https://github.com/ricardoyanez/grazing.git
+```
 2. Download the [GRAZING source](http://personalpages.to.infn.it/~nanni/grazing/grazing_jun2005.tar.gz) (full version).
 3. Untar the source, enter the source directory and rename the original makefile,
-```
-$ tar -zxvf grazing_jun2005.tar.gz
+
+...
+```$ tar -zxvf grazing_jun2005.tar.gz
 $ cd grazing
 $ mv makefile makefile.orig
 ```
