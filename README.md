@@ -27,10 +27,6 @@ Replacing NAG routines for free or open-source alternatives.
    $ make  
 6. Define the environment were the GRAZING data is located. See section [About Data Files](#about-data-files).
 
-## NAG Documentation
-
-GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
-
 ## About Data Files
 
 GRAZING comes with three data files, `massexp_2004.dat`, `mtablex_2004.dat` and `be23.dat`. The location of these files is defined in `grazing_file.icl` and must be changed for every compilation of GRAZING.
@@ -189,6 +185,10 @@ The PCHIP routines are part of the Slatec Library. They can be found in [Netlib]
 <ins>REFERENCE</ins>
 
 Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Livermore National Laboratory
+
+## NAG Documentation
+
+GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of too old versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
 
 ## changelog
 
