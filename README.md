@@ -53,7 +53,8 @@ GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the document
 
 ### C05ADF
 
-`C05ADF` locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
+Locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
+
 ```Fortran
 SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
 INTEGER IFAIL
@@ -62,15 +63,17 @@ EXTERNAL F
 ```
 
 The `C05ADF` routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
+
 ```Fortran
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 
 ```
+
 which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
 
 ### D01AMF
 
-`D01AMF` calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
+Calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
 
 ```Fortran
 SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,W,LW,IW,LIW,IFAIL)
@@ -82,7 +85,7 @@ The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 
 ### D01ASF
 
-`D01ASF` calculates an approximation to the sine or the cosine transform of a function g over [a, ∞) for a user-specified value of ω.
+Calculates an approximation to the sine or the cosine transform of a function g over [a, ∞) for a user-specified value of ω.
 
 ```Fortran
  SUBROUTINE D01ASF(G,A,OMEGA,KEY,EPSABS,RESULT,ABSERR,
@@ -97,7 +100,7 @@ The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 
 ### D02BBF
 
-`D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
+Solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
 
 ```Fortran
    CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
@@ -107,7 +110,7 @@ The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-
 
 ### E01BEF
 
-`E01BEF` computes a monotonicity-preserving piecewise cubic Hermite interpolant to a set of data points.
+Computes a monotonicity-preserving piecewise cubic Hermite interpolant to a set of data points.
 
 ```Fortran
 SUBROUTINE E01BEF(N,X,F,D,IFAIL)
@@ -119,7 +122,7 @@ The `E01BEF` routine is replaced by [PCHIP](#pchip) routine DPCHIM.
 
 ### S14ABF
 
-`S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
+Returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
 
 ```Fortran
 REAL FUNCTION S14ABF(X, IFAIL)
@@ -131,7 +134,7 @@ The `S14ABF` routine is substituted with a C wrapper function that calls `lgamma
 
 ### S15ADF
 
-`S15ADF` returns the value of the complementary error function, erfc x, via the routine name.
+Returns the value of the complementary error function, erfc x, via the routine name.
 
 ```Fortran
 REAL FUNCTION S15ADF(X,IFAIL)
@@ -143,7 +146,7 @@ The `S15ADF` routine is substituted with a C wrapper function that calls `erfc()
 
 ### S18DEF
 
-`S18DEF` returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
+Returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
 ν and n = 0, 1, . . . , N − 1, with an option for exponential scaling.
 
 ```Fortran
@@ -158,7 +161,7 @@ The `S18DEF` routine is replaced by the modified Bessel function of [Amos](#amos
 
 ### X05BAF
 
-`X05BAF` returns the amount of processor time used since an unspecified previous time, via the routine name.
+Returns the amount of processor time used since an unspecified previous time, via the routine name.
 
 ```Fortran
 real FUNCTION X05BAF()
