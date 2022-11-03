@@ -106,8 +106,31 @@ c$$$      write(*,*) '*** call to D02BBF'
 C
 C     ------------------------------------------------------------------------
 C
+C     E01BEF computes a monotonicity-preserving piecewise cubic Hermite
+C     interpolant to a set of data points.
+C
+C     The PCHIM routine is used to substitute E01BEF.
+C
+      SUBROUTINE E01BEF(N,X,F,D,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      DIMENSION X(N),F(N),D(N)
+      CALL DPCHIM(N,X,F,D,1,IFAIL)
+      write(*,*) '*** call to E01BEF',D(1),IFAIL
+      RETURN
+      END
+C
+C     ------------------------------------------------------------------------
+C
+      SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
+      write(*,*) '*** call to E01BFF'
+      stop
+      RETURN
+      END 
+C
+C     ------------------------------------------------------------------------
+C
 C     S14ABF returns a value for the logarithm of the Gamma function,
-C     ln Γ(x), via the routine name.
+C     ln gamma(x), via the routine name.
 C
 C     The C function c_s14abf is used to substitute S14ABF by calling lgamma().
 C
@@ -172,6 +195,17 @@ C
 c$$$      write(*,*) '*** call to X05BAF=',X05BAF
       RETURN
       END
+C
+C     ------------------------------------------------------------------------
+C
+C     Returns double-precision machine constants
+C
+      REAL*8 FUNCTION D1MACH(I)
+      IMPLICIT REAL*8(A-H,O-Z)
+      INTEGER I
+      D1MACH = c_d1mach(I)
+      RETURN
+      END
 
 
 
@@ -182,18 +216,6 @@ c$$$      write(*,*) '*** call to X05BAF=',X05BAF
       return
       end
 
-      subroutine E01BEF(N,X,F,D,IFAIL)
-      write(*,*) '*** call to E01BEF'
-      stop
-      return
-      end
-
-      subroutine E01BFF(N,X,F,D,M,PX,PF,IFAIL)
-      write(*,*) '*** call to E01BFF'
-      stop
-      return
-      end
- 
       subroutine E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
       write(*,*) '*** call to E01BGF'
       stop

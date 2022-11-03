@@ -3,11 +3,9 @@
 F77=gfortran
 FFLAGS=-g -std=legacy -fno-automatic
 
-SRC=dqagi.f dqagie.f dqelg.f dqk15i.f dqpsrt.f d1mach.f \
-    dqawfe.f dqawoe.f dqc25f.f dqcheb.f dqk15w.f dqwgtf.f \
-    i1mach.f r1mach.f xerror.f \
-    xerrwv.f xerprt.f xersav.f xerabt.f xerctl.f xgetua.f j4save.f s88fmt.f \
-    fdump.f dgtsl.f
+SRC=dqagi.f dqagie.f dqelg.f dqk15i.f dqpsrt.f dqawfe.f dqawoe.f dqc25f.f \
+    dqcheb.f dqk15w.f dqwgtf.f i1mach.f r1mach.f xerror.f xerrwv.f xerprt.f \
+    xersav.f xerabt.f xerctl.f xgetua.f j4save.f s88fmt.f fdump.f dgtsl.f
 
 OBJ=$(SRC:%.f=%.o)
 
@@ -56,9 +54,6 @@ ifeq (,$(wildcard ./dqpsrt.f))
 endif
 ifeq (,$(wildcard ./dqwgtf.f))
 	wget https://netlib.org/quadpack/dqwgtf.f -O ./dqwgtf.f
-endif
-ifeq (,$(wildcard ./d1mach.f))
-	wget https://netlib.org/port/d1mach.f -O ./d1mach.f
 endif
 ifeq (,$(wildcard ./i1mach.f))
 	wget https://netlib.org/port/i1mach.f -O ./i1mach.f

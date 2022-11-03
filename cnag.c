@@ -39,7 +39,7 @@ double c_x05baf_() {
 }
 
 /*
- * S14ABF returns a value for the logarithm of the Gamma function, ln Γ(x),
+ * S14ABF returns a value for the logarithm of the Gamma function, ln gamma(x),
  * via the routine name.
  *
  * This wapper uses the GNU C Library function lgamma().
