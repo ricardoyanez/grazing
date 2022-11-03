@@ -51,7 +51,7 @@ Changes to GRAZING are distributed as a patches.
 
 GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of older versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
 
-### Calls to `C05ADF`
+### `C05ADF`
 
 `C05ADF` locates a zero of a continuous function in a given interval by a combination of the methods of linear interpolation, extrapolation and bisection.
 ```Fortran
@@ -68,7 +68,7 @@ FUNCTION ZBRENT(FUNC,X1,X2,TOL)
 ```
 which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
 
-### Calls to `D01AMF`
+### `D01AMF`
 
 `D01AMF` calculates an approximation to the integral of a function f(x) over an infinite or semi-infinite interval.
 
@@ -80,7 +80,7 @@ EXTERNAL F
 ```
 The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `DQAGI`.
 
-### Calls to `D01ASF`
+### `D01ASF`
 
 `D01ASF` calculates an approximation to the sine or the cosine transform of a function g over [a, ∞) for a user-specified value of ω.
 
@@ -95,7 +95,7 @@ The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 ```
 The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `QAWFE`.
 
-### Calls to `D02BBF`
+### `D02BBF`
 
 `D02PCF` solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
 
@@ -105,7 +105,7 @@ The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration
 
 The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
-### Calls to `E01BEF`
+### `E01BEF`
 
 `E01BEF` computes a monotonicity-preserving piecewise cubic Hermite interpolant to a set of data points.
 
@@ -117,7 +117,7 @@ real X(N), F(N), D(N)
 
 The `E01BEF` routine is replaced by [PCHIP](#pchip) routine DPCHIM.
 
-### Calls to `S14ABF`
+### `S14ABF`
 
 `S14ABF` returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
 
@@ -129,7 +129,7 @@ REAL X
 
 The `S14ABF` routine is substituted with a C wrapper function that calls `lgamma()`.
 
-### Calls to `S15ADF`
+### `S15ADF`
 
 `S15ADF` returns the value of the complementary error function, erfc x, via the routine name.
 
@@ -141,7 +141,7 @@ REAL X
 
 The `S15ADF` routine is substituted with a C wrapper function that calls `erfc()`.
 
-### Calls to `S18DEF`
+### `S18DEF`
 
 `S18DEF` returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
 ν and n = 0, 1, . . . , N − 1, with an option for exponential scaling.
@@ -156,7 +156,7 @@ CHARACTER∗1 SCALE
 
 The `S18DEF` routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions).
 
-### Calls to `X05BAF`
+### `X05BAF`
 
 `X05BAF` returns the amount of processor time used since an unspecified previous time, via the routine name.
 
