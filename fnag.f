@@ -49,7 +49,7 @@ C
       CALL DQAGI(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,NAVAL,
      +     IFAIL,LIW,LW,LAST,IW,W)
       IF (IFAIL.NE.0)THEN
-         WRITE(*,*) '*** Call to D01AMF',RESULT,IFAIL
+        WRITE(*,*) '*** Call to D01AMF',RESULT,IFAIL
       ENDIF
       RETURN
       END
@@ -75,7 +75,7 @@ C
      &     RESULT,ABSERR,NEVAL,IFAIL,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
      &     RLIST,ELIST,IORD,NNLOG,CHEBMO)
       IF (IFAIL.NE.0)THEN
-         WRITE(*,*) '*** Call to D01ASF',RESULT,IFAIL
+        WRITE(*,*) '*** Call to D01ASF',RESULT,IFAIL
       ENDIF
       RETURN
       END
@@ -85,11 +85,16 @@ C     more points, over the whole of its specified range, using third-order
 C     finite-difference formulae with error estimates, according to a method
 C     due to Gill and Miller.
 C
-      subroutine D01GAF(X,Y,N,ANS,ER,IFAIL)
-      write(*,*) '*** call to D01GAF'
-      stop
-      return
-      end
+C     A Fortran port of procedure 4pt written in Angol by Gill and Miller
+C     is used to substitute D01GAF.
+C
+      SUBROUTINE D01GAF(X,Y,N,ANS,ER,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      DIMENSION X(N),Y(N)
+      CALL FOURPT(X,Y,N,ANS,ER,IFAIL)
+c$$$      write(*,*) '*** call to D01GAF',ans,er,ifail
+      RETURN
+      END
 C
 C     ------------------------------------------------------------------------
 C
@@ -147,7 +152,7 @@ C
       LOGICAL SKIP
       SKIP=.TRUE.
       CALL DPCHFE(N,X,F,D,1,SKIP,M,PX,PF,IFAIL)
-      write(*,*) '*** Call to E01BFF',PX(1),PF(1),IFAIL
+c$$$      write(*,*) '*** Call to E01BFF',PX(1),PF(1),IFAIL
       RETURN
       END 
 C
@@ -195,12 +200,12 @@ C
       ZR=DBLE(Z)
       ZI=AIMAG(Z)
       KODE=1
-      IF ( SCALE .EQ. 'S' .OR. SCALE .EQ. 's' ) THEN
-         KODE=2
+      IF (SCALE.EQ.'S' .OR. SCALE.EQ.'s') THEN
+        KODE=2
       ENDIF
       CALL ZBESI(ZR,ZI,FNU,KODE,N,CYR,CYI,NZ,IFAIL)
-      DO I = 1,N
-         CY(I)=DCMPLX(CYR(I),CYI(I))
+      DO I=1,N
+        CY(I)=DCMPLX(CYR(I),CYI(I))
       ENDDO
 c$$$      write(*,*) '*** call to S18DEF',CYR(1),CYI(1),CY(1),IFAIL
       RETURN
@@ -215,7 +220,7 @@ C     The C function c_x05baf is used to substitute X05BAF by calling clock().
 C
       REAL*8 FUNCTION X05BAF()
       IMPLICIT REAL*8(A-H,O-Z)
-      X05BAF = c_x05baf()
+      X05BAF=c_x05baf()
 c$$$      write(*,*) '*** call to X05BAF=',X05BAF
       RETURN
       END
@@ -227,7 +232,7 @@ C
       REAL*8 FUNCTION D1MACH(I)
       IMPLICIT REAL*8(A-H,O-Z)
       INTEGER I
-      D1MACH = c_d1mach(I)
+      D1MACH=c_d1mach(I)
       RETURN
       END
 

@@ -61,7 +61,8 @@ grazing.o: $(SRC)
 libnag.so: fnag.f cnag.c
 	$(F77) $(FFLAGS) -fPIC -c fnag.f
 	$(CC) $(CFLAGS) -fPIC -c cnag.c
-	$(F77) -shared -o libnag.so fnag.o cnag.o
+	$(F77) $(FFLAGS) -fPIC -c fourpt.f
+	$(F77) -shared -o libnag.so fnag.o cnag.o fourpt.o
 
 rksuite.so:
 	$(MAKE) -C rksuite

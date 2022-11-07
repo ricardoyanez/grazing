@@ -98,6 +98,18 @@ Calculates an approximation to the sine or the cosine transform of a function g 
 ```
 The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `QAWFE`.
 
+### D01GAF
+
+D01GAF integrates a function which is specified numerically at four or more points, over the whole of its specified range, using third-order finite-difference formulae with error estimates, according to a method due to Gill and Miller.
+
+```Fortran
+SUBROUTINE D01GAF(X,Y,N,ANS,ER,IFAIL)
+INTEGER N, IFAIL
+real X(N), Y(N), ANS, ER
+```
+
+The `D01GAF` routine is replaced by routine [FOURPT](#gill---miller-algorithm).
+
 ### D02BBF
 
 Solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
@@ -118,7 +130,7 @@ INTEGER N, IFAIL
 real X(N), F(N), D(N)
 ```
 
-The `E01BEF` routine is replaced by [PCHIP](#pchip) routine DPCHIM.
+The `E01BEF` routine is replaced by [PCHIP](#pchip) routine `DPCHIM`.
 
 ```Fortran
 SUBROUTINE DPCHIM (N,X,F,D,INCFD,IERR)
@@ -128,7 +140,7 @@ DOUBLE PRECISION  X(N), F(INCFD,N), D(INCFD,N)
 
 ### E01BFF
 
-E01BFF evaluates a piecewise cubic Hermite interpolant at a set of points.
+Evaluates a piecewise cubic Hermite interpolant at a set of points.
 
 ```Fortran
 SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
@@ -136,7 +148,7 @@ INTEGER N, M, IFAIL
 real X(N), F(N), D(N), PX(M), PF(M)
 ```
 
-The `E01BFF` routine is replaced by [PCHIP](#pchip) routine DPCHFE.
+The `E01BFF` routine is replaced by [PCHIP](#pchip) routine `DPCHFE`.
 
 ```Fortran
 SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
@@ -227,6 +239,14 @@ The PCHIP routines are part of the Slatec Library. They can be found in [Netlib]
 <ins>REFERENCE</ins>
 
 Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Livermore National Laboratory
+
+## Gill-Miller Algorithm
+
+The routine `FOURPT` is a FORTRAN port of the procedure by Gill and Miller written in ALGOL.
+
+<ins>REFERENCE</ins>
+
+Gill P. E. and Miller G. F. (1972) An algorithm for the integration of unequally spaced data, Comput. J. 15 80–83.
 
 ## changelog
 
