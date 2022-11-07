@@ -48,7 +48,9 @@ C
       INTEGER NAVAL,LAST
       CALL DQAGI(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,NAVAL,
      +     IFAIL,LIW,LW,LAST,IW,W)
-c$$$      write(*,*) '*** call to D01AMF',RESULT,IFAIL
+      IF (IFAIL.NE.0)THEN
+         WRITE(*,*) '*** Call to D01AMF',RESULT,IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -70,11 +72,24 @@ C
       DIMENSION ALIST(LIMIT),BLIST(LIMIT),RLIST(LIMIT),ELIST(LIMIT)
       DIMENSION CHEBMO(MAXP1,25)
       CALL DQAWFE(G,A,OMEGA,KEY,EPSABS,LIMLST,LIMIT,MAXP1,
-     &     RESULT,ABSERR,NEVAL,IFLAG,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
+     &     RESULT,ABSERR,NEVAL,IFAIL,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
      &     RLIST,ELIST,IORD,NNLOG,CHEBMO)
-c$$$      write(*,*) '*** call to D01ASF',RESULT,IFLAG
+      IF (IFAIL.NE.0)THEN
+         WRITE(*,*) '*** Call to D01ASF',RESULT,IFAIL
+      ENDIF
       RETURN
       END
+C
+C     D01GAF integrates a function which is specified numerically at four or
+C     more points, over the whole of its specified range, using third-order
+C     finite-difference formulae with error estimates, according to a method
+C     due to Gill and Miller.
+C
+      subroutine D01GAF(X,Y,N,ANS,ER,IFAIL)
+      write(*,*) '*** call to D01GAF'
+      stop
+      return
+      end
 C
 C     ------------------------------------------------------------------------
 C
@@ -121,9 +136,18 @@ C
 C
 C     ------------------------------------------------------------------------
 C
+C     E01BFF evaluates a piecewise cubic Hermite interpolant at a set of
+C     points.
+C
+C     The DPCHFE routine is used to substitute E01BFF.
+C      
       SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
-      write(*,*) '*** call to E01BFF'
-      stop
+      IMPLICIT REAL*8(A-H,O-Z)
+      DIMENSION X(N),F(N),D(N),PX(N),PF(N)
+      LOGICAL SKIP
+      SKIP=.TRUE.
+      CALL DPCHFE(N,X,F,D,1,SKIP,M,PX,PF,IFAIL)
+      write(*,*) '*** Call to E01BFF',PX(1),PF(1),IFAIL
       RETURN
       END 
 C
@@ -136,7 +160,7 @@ C     The C function c_s14abf is used to substitute S14ABF by calling lgamma().
 C
       REAL*8 FUNCTION S14ABF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
-      S14ABF = c_s14abf(x,ifail)
+      S14ABF = c_s14abf(X,IFAIL)
 c$$$      write(*,*) '*** call to S14ABF',X,S14ABF
       RETURN
       END
@@ -150,7 +174,7 @@ C     The C function c_s15adf is used to substitute S15ADF by calling erfc().
 C
       REAL*8 FUNCTION S15ADF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
-      S15ADF = c_s15adf(x,ifail)
+      S15ADF = c_s15adf(X,IFAIL)
 c$$$      write(*,*) '*** call to S15ADF',X,S15ADF
       RETURN
       END
@@ -218,12 +242,6 @@ C
 
       subroutine E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
       write(*,*) '*** call to E01BGF'
-      stop
-      return
-      end
-
-      subroutine D01GAF(X,Y,N,ANS,ER,IFAIL)
-      write(*,*) '*** call to D01GAF'
       stop
       return
       end

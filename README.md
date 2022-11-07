@@ -20,7 +20,7 @@ Replacing NAG routines for free or open-source alternatives.
 4. Put your personal copy of [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT routine (`zbrent.f`) in directory `nrf77`,
 
    ```  
-   $ cp -a [path-to-nummerical recipes]/zbrent.f nrf77/zbrent.f  
+   $ cp -a [path-to-nummerical-recipes]/zbrent.f nrf77/zbrent.f  
 5. Compile the program,
 
    ```  
@@ -119,6 +119,31 @@ real X(N), F(N), D(N)
 ```
 
 The `E01BEF` routine is replaced by [PCHIP](#pchip) routine DPCHIM.
+
+```Fortran
+SUBROUTINE DPCHIM (N,X,F,D,INCFD,IERR)
+INTEGER  N, IERR
+DOUBLE PRECISION  X(N), F(INCFD,N), D(INCFD,N)
+```
+
+### E01BFF
+
+E01BFF evaluates a piecewise cubic Hermite interpolant at a set of points.
+
+```Fortran
+SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
+INTEGER N, M, IFAIL
+real X(N), F(N), D(N), PX(M), PF(M)
+```
+
+The `E01BFF` routine is replaced by [PCHIP](#pchip) routine DPCHFE.
+
+```Fortran
+SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
+INTEGER N, NE, IERR
+DOUBLE PRECISION X(N), F(INCFD,N), D(INCFD,N), XE(NE), FE(NE)
+LOGICAL SKIP
+```
 
 ### S14ABF
 

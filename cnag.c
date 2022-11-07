@@ -82,8 +82,10 @@ double c_s15adf_(double *x, int *ifail) {
 }
 
 /*
- * This function is a C port of the FORTRAN subroutine D1MACH used by RKSUITE.
- * A FORTRAN version of D1MACH can be found in Netlib.
+ * This function is a C port of the FORTRAN subroutine D1MACH used by RKSUITE,
+ * QUADPACK and Amos. The original FORTRAN version of D1MACH can be found in
+ * Netlib.
+ *
  */
 
 #include <float.h>
