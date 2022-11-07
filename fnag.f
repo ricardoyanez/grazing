@@ -134,8 +134,15 @@ C
       SUBROUTINE E01BEF(N,X,F,D,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       DIMENSION X(N),F(N),D(N)
-      CALL DPCHIM(N,X,F,D,1,IFAIL)
-      write(*,*) '*** call to E01BEF',D(1),IFAIL
+      CALL DPCHIM(N,X,F,D,1,IERR)
+      IF (IERR.EQ.-1) THEN
+        IFAIL=1
+      ELSEIF (IERR.EQ.-3) THEN
+        IFAIL=2
+      ELSE
+        IFAIL=0
+      ENDIF
+c$$$      write(*,*) '*** call to E01BEF',IFAIL
       RETURN
       END
 C
