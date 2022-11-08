@@ -18,9 +18,9 @@ Replacing NAG routines for free or open-source alternatives.
    GRAZ_MASS_EXP=$GRAZ_DIR/massexp_2004.dat  
    GRAZ_MASS_NIX=$GRAZ_DIR/mtablex_2004.dat  
    GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat  
-   export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
+   export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23  
    ```  
-   and source
+   and source,
    ```  
    $ source ~/.bashrc  
 See section [About Data Files](#about-data-files) for more information about this step.
