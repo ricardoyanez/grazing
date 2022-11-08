@@ -10,22 +10,11 @@ Replacing NAG routines for free or open-source alternatives.
 
    ```  
    $ git clone https://github.com/ricardoyanez/grazing.git  
-2. Download the [GRAZING source](http://personalpages.to.infn.it/~nanni/grazing/grazing_jun2005.tar.gz) (full version).
-3. Untar the source, enter the source directory and rename the original makefile,
-
-   ```  
-   $ tar -zxvf grazing_jun2005.tar.gz  
-   $ cd grazing  
-   $ mv makefile makefile.orig  
-4. Put your personal copy of [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT routine (`zbrent.f`) in directory `nrf77`,
-
-   ```  
-   $ cp -a [path-to-nummerical-recipes]/zbrent.f nrf77/zbrent.f  
-5. Compile the program,
+2. Compile the program,
 
    ```  
    $ make  
-6. Define the environment were the GRAZING data is located. See section [About Data Files](#about-data-files).
+3. Define the environment were the GRAZING data is located. See section [About Data Files](#about-data-files).
 
 ## About Data Files
 
