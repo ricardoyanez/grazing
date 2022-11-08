@@ -4,7 +4,7 @@
 
 Replacing NAG routines for free or open-source alternatives.
 
-## INSTALLATION
+## Installation
 
 1. Clone repository, enter source directory and compile,
 
@@ -52,7 +52,7 @@ Locates a zero of a continuous function in a given interval by a combination of 
 ```Fortran
 SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
 INTEGER IFAIL
-real A,B,EPS,ETA,F,X
+REAL A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
@@ -71,7 +71,7 @@ Calculates an approximation to the integral of a function f(x) over an infinite 
 ```Fortran
 SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,W,LW,IW,LIW,IFAIL)
 INTEGER INF, LW, IW(LIW), LIW, IFAIL
-real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
+REAL F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
 EXTERNAL F
 ```
 
@@ -85,7 +85,7 @@ Calculates an approximation to the sine or the cosine transform of a function g 
  SUBROUTINE D01ASF(G,A,OMEGA,KEY,EPSABS,RESULT,ABSERR,
 1 LIMLST,LST,ERLST,RSLST,IERLST,W,LW,IW,LIW,IFAIL)
  INTEGER KEY, LIMLST, LST, IERLST(LIMLST), LW, IW(LIW), LIW, IFAIL
- real G, A, OMEGA, EPSABS, RESULT, ABSERR, ERLST(LIMLST), RSLST(LIMLST), W(LW)
+ REAL G, A, OMEGA, EPSABS, RESULT, ABSERR, ERLST(LIMLST), RSLST(LIMLST), W(LW)
  EXTERNAL G
 ```
 The **D01ASF** routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine **QAWFE**.
@@ -97,7 +97,7 @@ Integrates a function which is specified numerically at four or more points, ove
 ```Fortran
 SUBROUTINE D01GAF(X,Y,N,ANS,ER,IFAIL)
 INTEGER N, IFAIL
-real X(N), Y(N), ANS, ER
+REAL X(N), Y(N), ANS, ER
 ```
 
 The **D01GAF** routine is replaced by the [Gill-Miller Algorithm](#gill-miller-algorithm) routine **FOURPT**.
@@ -125,7 +125,7 @@ Computes a monotonicity-preserving piecewise cubic Hermite interpolant to a set 
 ```Fortran
 SUBROUTINE E01BEF(N,X,F,D,IFAIL)
 INTEGER N, IFAIL
-real X(N), F(N), D(N)
+REAL X(N), F(N), D(N)
 ```
 
 The **E01BEF** routine is replaced by [PCHIP](#pchip) routine **DPCHIM**.
@@ -143,7 +143,7 @@ Evaluates a piecewise cubic Hermite interpolant at a set of points.
 ```Fortran
 SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
 INTEGER N, M, IFAIL
-real X(N), F(N), D(N), PX(M), PF(M)
+REAL X(N), F(N), D(N), PX(M), PF(M)
 ```
 
 The **E01BFF** routine is replaced by [PCHIP](#pchip) routine **DPCHFE**.
@@ -162,7 +162,7 @@ Evaluates a piecewise cubic Hermite interpolant and its first derivative at a se
 ```Fortran
 SUBROUTINE E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
 INTEGER N, M, IFAIL
-real X(N), F(N), D(N), PX(M), PF(M), PD(M)
+REAL X(N), F(N), D(N), PX(M), PF(M), PD(M)
 ```
 
 The **E01BGF** routine is replaced by [PCHIP](#pchip) routine **DPCHFD**.
@@ -173,6 +173,18 @@ INTEGER N, NE, IERR
 DOUBLE PRECISION X(N), F(INCFD,N), D(INCFD,N), XE(NE), FE(NE), DE(NE)
 LOGICAL SKIP
 ```
+
+### S14AAF
+
+S14AAF returns the value of the Gamma function Γ(x), via the routine name.
+
+```Fortran
+REAL FUNCTION S14AAF(X, IFAIL)
+INTEGER IFAIL
+REAL X
+```
+
+The **S14AAF** routine is substituted with a C wrapper function that calls **tgamma()**.
 
 ### S14ABF
 
@@ -198,6 +210,40 @@ REAL X
 
 The **S15ADF** routine is substituted with a C wrapper function that calls **erfc()**.
 
+### S18AEF
+
+Returns the value of the modified Bessel Function I0(x), via the routine name.
+
+```Fortran
+REAL FUNCTION S18AEF(X, IFAIL)
+INTEGER IFAIL
+REAL X
+```
+
+The **S18AEF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **BESSI0** function,
+
+```Fortran
+FUNCTION BESSI0(X)
+REAL X
+```
+
+### S18AFF
+
+Returns the value of the modified Bessel Function I1(x), via the routine name.
+
+```Fortran
+REAL FUNCTION S18AFF(X, IFAIL)
+INTEGER IFAIL
+REAL X
+```
+
+The **S18AFF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **BESSI1** function,
+
+```Fortran
+FUNCTION BESSI1(X)
+REAL X
+```
+
 ### S18DEF
 
 Returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(z) for complex z, non-negative
@@ -206,8 +252,8 @@ Returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(
 ```Fortran
 SUBROUTINE S18DEF(FNU,Z,N,SCALE,CY,NZ,IFAIL)
 INTEGER N, NZ, IFAIL
-real FNU
-complex Z, CY(N)
+REAL FNU
+COMPLEX Z, CY(N)
 CHARACTER∗1 SCALE
 ```
 
@@ -218,7 +264,7 @@ The **S18DEF** routine is replaced by the modified Bessel function of [Amos](#am
 Returns the amount of processor time used since an unspecified previous time, via the routine name.
 
 ```Fortran
-real FUNCTION X05BAF()
+REAL FUNCTION X05BAF()
 ```
 
 The **X05BAF** routine is substituted with a C wrapper function that calls **clock()**.

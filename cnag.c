@@ -22,6 +22,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <math.h>
+#include <fenv.h>
+#include <float.h>
 
 /*
  * X05BAF returns the amount of processor time used since an unspecified 
@@ -32,10 +36,27 @@
  *
  */
 
-#include <time.h>
-
 double c_x05baf_() {
   return (double)clock()/CLOCKS_PER_SEC;
+}
+
+/*
+ * S14AAF eturns the value of the Gamma function, via the routine name
+ *
+ * This wapper uses the GNU C Library function tgamma().
+ *
+ */
+
+double c_s14aaf_(double *x, int *ifail) {
+
+  double f;
+  feclearexcept(FE_ALL_EXCEPT);
+  f = tgamma(*x);
+  *ifail = 0;
+  if ( fetestexcept(FE_INVALID|FE_DIVBYZERO|FE_OVERFLOW|FE_UNDERFLOW) ) {
+    *ifail = 1;
+  }
+  return f;
 }
 
 /*
@@ -45,9 +66,6 @@ double c_x05baf_() {
  * This wapper uses the GNU C Library function lgamma().
  *
  */
-
-#include <math.h>
-#include <fenv.h>
 
 double c_s14abf_(double *x, int *ifail) {
 
@@ -88,8 +106,6 @@ double c_s15adf_(double *x, int *ifail) {
  *
  */
 
-#include <float.h>
-
 double c_d1mach_(int *i) {
   switch (*i) {
   case 1:
@@ -108,3 +124,6 @@ double c_d1mach_(int *i) {
   }
   return EXIT_SUCCESS;
 }
+
+
+

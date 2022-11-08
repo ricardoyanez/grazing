@@ -230,6 +230,22 @@ C
 C
 C     ------------------------------------------------------------------------
 C
+C     S14AAF returns the value of the Gamma function via the routine name.
+C
+C     The C function c_s14aaf is used to substitute S14AAF by calling tgamma().
+C
+      REAL*8 FUNCTION S14AAF(X,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      S14AAF = c_s14aaf(X,IFAIL)
+      WRITE(*,*) '*** Call to S14ABF',X,S14AAF,IFAIL
+      WRITE(*,*) 'Warning: This function has not been tested.'
+      WRITE(*,*) 'Please report fort.10 to ricardo.yanez@calel.org.'
+      STOP
+      RETURN
+      END
+C
+C     ------------------------------------------------------------------------
+C
 C     S14ABF returns a value for the logarithm of the Gamma function,
 C     ln gamma(x), via the routine name.
 C
@@ -257,6 +273,42 @@ C
       IF (IFAIL.NE.0) THEN
         WRITE(1,*) '*** Call to S15ADF',X,S15ADF,IFAIL
       ENDIF
+      RETURN
+      END
+C
+C     ------------------------------------------------------------------------
+C
+C     S18AEF returns the value of the modified Bessel Function I0(x), via the
+C     routine name.
+C
+C     The Numerical Recipes BESSI0 function is used to substitute S18AEF.
+C
+      REAL*8 function S18AEF(X,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      S18AEF=BESSI0(X)
+      IFAIL=0
+      WRITE(*,*) '*** Call to S18AEF',S18AEF,IFAIL
+      WRITE(*,*) 'Warning: This function has not been tested.'
+      WRITE(*,*) 'Please report fort.10 to ricardo.yanez@calel.org.'
+      STOP
+      RETURN
+      END
+C
+C     ------------------------------------------------------------------------
+C
+C     S18AFF returns the value of the modified Bessel Function I1(x), via the
+C     routine name.
+C
+C     The Numerical Recipes BESSI1 function is used to substitute S18AFF.
+C
+      REAL*8 FUNCTION S18AFF(X,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      S18AFF=BESSI1(X)
+      IFAIL=0
+      WRITE(*,*) '*** Call to S18AFF',S18AFF,IFAIL
+      WRITE(*,*) 'Warning: This function has not been tested.'
+      WRITE(*,*) 'Please report fort.10 to ricardo.yanez@calel.org.'
+      STOP
       RETURN
       END
 C
@@ -322,20 +374,3 @@ C
       return
       end
 
-      real function S14AAF(X,IFAIL)
-      write(*,*) '*** call to S14AaF'
-      stop
-      return
-      end
-
-      real function S18AEF(X,IFAIL)
-      write(*,*) '*** call to S18AEF'
-      stop
-      return
-      end
-
-      real function S18AFF(X, IFAIL)
-      write(*,*) '*** call to S18AFF'
-      stop
-      return
-      end
