@@ -43,7 +43,7 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 
 `GRAZ_DIR` defines the path to the directory where the data files are located, for example, `$HOME/grazing/` (user) or `/usr/local/share/grazing/` (system-wide).
 
-These changes to GRAZING are distributed as a patches.
+These changes to GRAZING are distributed as patches.
 
 ## NAG Routine Calls by GRAZING
 
@@ -64,9 +64,21 @@ The **C05ADF** routine is replaced by the [Numerical Recipes](#numerical-recipes
 
 ```Fortran
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
+REAL X1,X2,TOL
+EXTERNAL FUNC
 ```
 
 which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
+
+### C05AVF
+
+Attempts to locate an interval containing a simple zero of a continuous function using a binary search. It uses reverse communication for evaluating the function.
+
+```Fortran
+SUBROUTINE C05AVF(X,FX,H,BOUNDL,BOUNDU,Y,C,IND,IFAIL)
+INTEGER IND,IFAIL
+REAL X,FX,H,BOUNDL,BOUNDU,Y,C(11)
+```
 
 ### D01AMF
 
@@ -74,8 +86,8 @@ Calculates an approximation to the integral of a function f(x) over an infinite 
 
 ```Fortran
 SUBROUTINE D01AMF(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,W,LW,IW,LIW,IFAIL)
-INTEGER INF, LW, IW(LIW), LIW, IFAIL
-REAL F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
+INTEGER INF,LW,IW(LIW),LIW,IFAIL
+REAL F,BOUND,EPSABS,EPSREL,RESULT,ABSERR,W(LW)
 EXTERNAL F
 ```
 
@@ -88,8 +100,8 @@ Calculates an approximation to the sine or the cosine transform of a function g 
 ```Fortran
  SUBROUTINE D01ASF(G,A,OMEGA,KEY,EPSABS,RESULT,ABSERR,
 1 LIMLST,LST,ERLST,RSLST,IERLST,W,LW,IW,LIW,IFAIL)
- INTEGER KEY, LIMLST, LST, IERLST(LIMLST), LW, IW(LIW), LIW, IFAIL
- REAL G, A, OMEGA, EPSABS, RESULT, ABSERR, ERLST(LIMLST), RSLST(LIMLST), W(LW)
+ INTEGER KEY,LIMLST,LST,IERLST(LIMLST),LW,IW(LIW),LIW,IFAIL
+ REAL G,A,OMEGA,EPSABS,RESULT,ABSERR,ERLST(LIMLST),RSLST(LIMLST),W(LW)
  EXTERNAL G
 ```
 The **D01ASF** routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine **QAWFE**.
@@ -100,8 +112,8 @@ Integrates a function which is specified numerically at four or more points, ove
 
 ```Fortran
 SUBROUTINE D01GAF(X,Y,N,ANS,ER,IFAIL)
-INTEGER N, IFAIL
-REAL X(N), Y(N), ANS, ER
+INTEGER N,IFAIL
+REAL X(N),Y(N),ANS,ER
 ```
 
 The **D01GAF** routine is replaced by the [Gill-Miller Algorithm](#gill-miller-algorithm) routine **FOURPT**.
@@ -128,16 +140,16 @@ Computes a monotonicity-preserving piecewise cubic Hermite interpolant to a set 
 
 ```Fortran
 SUBROUTINE E01BEF(N,X,F,D,IFAIL)
-INTEGER N, IFAIL
-REAL X(N), F(N), D(N)
+INTEGER N,IFAIL
+REAL X(N),F(N),D(N)
 ```
 
 The **E01BEF** routine is replaced by [PCHIP](#pchip) routine **DPCHIM**.
 
 ```Fortran
-SUBROUTINE DPCHIM (N,X,F,D,INCFD,IERR)
-INTEGER  N, IERR
-DOUBLE PRECISION  X(N), F(INCFD,N), D(INCFD,N)
+SUBROUTINE DPCHIM(N,X,F,D,INCFD,IERR)
+INTEGER N,IERR
+DOUBLE PRECISION X(N),F(INCFD,N),D(INCFD,N)
 ```
 
 ### E01BFF
@@ -146,16 +158,16 @@ Evaluates a piecewise cubic Hermite interpolant at a set of points.
 
 ```Fortran
 SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
-INTEGER N, M, IFAIL
-REAL X(N), F(N), D(N), PX(M), PF(M)
+INTEGER N,M,IFAIL
+REAL X(N),F(N),D(N),PX(M),PF(M)
 ```
 
 The **E01BFF** routine is replaced by [PCHIP](#pchip) routine **DPCHFE**.
 
 ```Fortran
 SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
-INTEGER N, NE, IERR
-DOUBLE PRECISION X(N), F(INCFD,N), D(INCFD,N), XE(NE), FE(NE)
+INTEGER N,NE,IERR
+DOUBLE PRECISION X(N),F(INCFD,N),D(INCFD,N),XE(NE),FE(NE)
 LOGICAL SKIP
 ```
 
@@ -165,16 +177,16 @@ Evaluates a piecewise cubic Hermite interpolant and its first derivative at a se
 
 ```Fortran
 SUBROUTINE E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
-INTEGER N, M, IFAIL
-REAL X(N), F(N), D(N), PX(M), PF(M), PD(M)
+INTEGER N,M,IFAIL
+REAL X(N),F(N),D(N),PX(M),PF(M),PD(M)
 ```
 
 The **E01BGF** routine is replaced by [PCHIP](#pchip) routine **DPCHFD**.
 
 ```Fortran
 SUBROUTINE DPCHFD(N,X,F,D,INCFD,SKIP,NE,XE,FE,DE,IERR)
-INTEGER N, NE, IERR
-DOUBLE PRECISION X(N), F(INCFD,N), D(INCFD,N), XE(NE), FE(NE), DE(NE)
+INTEGER N,NE,IERR
+DOUBLE PRECISION X(N),F(INCFD,N),D(INCFD,N),XE(NE),FE(NE),DE(NE)
 LOGICAL SKIP
 ```
 
@@ -183,7 +195,7 @@ LOGICAL SKIP
 S14AAF returns the value of the Gamma function Γ(x), via the routine name.
 
 ```Fortran
-REAL FUNCTION S14AAF(X, IFAIL)
+REAL FUNCTION S14AAF(X,IFAIL)
 INTEGER IFAIL
 REAL X
 ```
@@ -195,7 +207,7 @@ The **S14AAF** routine is substituted with a C wrapper function that calls **tga
 Returns a value for the logarithm of the Gamma function, ln Γ(x), via the routine name.
 
 ```Fortran
-REAL FUNCTION S14ABF(X, IFAIL)
+REAL FUNCTION S14ABF(X,IFAIL)
 INTEGER IFAIL
 REAL X
 ```
@@ -255,9 +267,9 @@ Returns a sequence of values for the modified Bessel functions I<sub>ν+n</sub>(
 
 ```Fortran
 SUBROUTINE S18DEF(FNU,Z,N,SCALE,CY,NZ,IFAIL)
-INTEGER N, NZ, IFAIL
+INTEGER N,NZ,IFAIL
 REAL FNU
-COMPLEX Z, CY(N)
+COMPLEX Z,CY(N)
 CHARACTER∗1 SCALE
 ```
 

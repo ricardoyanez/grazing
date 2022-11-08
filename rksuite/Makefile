@@ -13,5 +13,6 @@ endif
 	$(F77) $(FFLAGS) -fPIC -c $(SRC)
 	$(F77) -shared -o librksuite.so $(OBJ)
 	install librksuite.so ../
+
 clean:
 	rm -f *.o *.so *~

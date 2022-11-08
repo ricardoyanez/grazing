@@ -20,9 +20,9 @@ C     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 C
 C     ------------------------------------------------------------------------
 C
-C     NAG C05ADF locates a zero of a continuous function in a given interval
-C     by a combination of the methods of linear interpolation, extrapolation
-C     and bisection.
+C     C05ADF locates a zero of a continuous function in a given interval by
+C     combination of the methods of linear interpolation, extrapolation and
+C     bisection.
 C
 C     The Numerical Recipes ZBRENT function is used to substitute C05ADF.
 C
@@ -33,6 +33,20 @@ C
       IF (IFAIL.NE.0) THEN
         WRITE(1,*) '*** Call to C05ADF',X,IFAIL
       ENDIF
+      RETURN
+      END
+C
+C     ------------------------------------------------------------------------
+C
+C     C05AVF attempts to locate an interval containing a simple zero of a
+C     continuous function using a binary search. It uses reverse communication
+C     for evaluating the function
+C
+      SUBROUTINE C05AVF(X,FX,H,BOUNDL,BOUNDU,Y,C,IND,IFAIL)
+      WRITE(*,*) '*** Call to C05AVF'
+      WRITE(*,*) 'Warning: This function has not been tested.'
+      WRITE(*,*) 'Please report fort.10 to ricardo.yanez@calel.org.'
+      STOP
       RETURN
       END
 C
@@ -366,11 +380,4 @@ C
       END
 
 
-
-
-      subroutine C05AVF(X,FX,H,BOUNDL,BOUNDU,Y,C,IND,IFAIL)
-      write(*,*) '*** call to C05AVF'
-      stop
-      return
-      end
 

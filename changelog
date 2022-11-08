@@ -18,5 +18,6 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * E01BGF substituted with DPCHFD from PCHIM.
   * S14AAF substituted with tgamma().
   * S18AEF substituted with BESSI0.
+  * S18AFF substituted with BESSI1.
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700

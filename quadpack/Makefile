@@ -10,89 +10,89 @@ SRC=dqagi.f dqagie.f dqelg.f dqk15i.f dqpsrt.f dqawfe.f dqawoe.f dqc25f.f \
 OBJ=$(SRC:%.f=%.o)
 
 quadpack:
-ifeq (,$(wildcard ./dqagi.f))
-	wget https://netlib.org/quadpack/dqagi.f -O ./dqagi.f
+ifeq (,$(wildcard dqagi.f))
+	wget https://netlib.org/quadpack/dqagi.f
 endif
-ifeq (,$(wildcard ./dqagie.f))
-	wget https://netlib.org/quadpack/dqagie.f -O ./dqagie.f
+ifeq (,$(wildcard dqagie.f))
+	wget https://netlib.org/quadpack/dqagie.f
 endif
-ifeq (,$(wildcard ./dqelg.f))
-	wget https://netlib.org/quadpack/dqelg.f -O ./dqelg.f
+ifeq (,$(wildcard dqelg.f))
+	wget https://netlib.org/quadpack/dqelg.f
 endif
-ifeq (,$(wildcard ./dqk15i.f))
-	wget https://netlib.org/quadpack/dqk15i.f -O ./dqk15i.f
+ifeq (,$(wildcard dqk15i.f))
+	wget https://netlib.org/quadpack/dqk15i.f
 endif
-ifeq (,$(wildcard ./dqpsrt.f))
-	wget https://netlib.org/quadpack/dqpsrt.f -O ./dqpsrt.f
+ifeq (,$(wildcard dqpsrt.f))
+	wget https://netlib.org/quadpack/dqpsrt.f
 endif
-ifeq (,$(wildcard ./dqagie.f))
-	wget https://netlib.org/quadpack/dqagie.f -O ./dqagie.f
+ifeq (,$(wildcard dqagie.f))
+	wget https://netlib.org/quadpack/dqagie.f
 endif
-ifeq (,$(wildcard ./dqawfe.f))
-	wget https://netlib.org/quadpack/dqawfe.f -O ./dqawfe.f
+ifeq (,$(wildcard dqawfe.f))
+	wget https://netlib.org/quadpack/dqawfe.f
 endif
-ifeq (,$(wildcard ./dqawoe.f))
-	wget https://netlib.org/quadpack/dqawoe.f -O ./dqawoe.f
+ifeq (,$(wildcard dqawoe.f))
+	wget https://netlib.org/quadpack/dqawoe.f
 endif
-ifeq (,$(wildcard ./dqc25f.f))
-	wget https://netlib.org/quadpack/dqc25f.f -O ./dqc25f.f
+ifeq (,$(wildcard dqc25f.f))
+	wget https://netlib.org/quadpack/dqc25f.f
 endif
-ifeq (,$(wildcard ./dqcheb.f))
-	wget https://netlib.org/quadpack/dqcheb.f -O ./dqcheb.f
+ifeq (,$(wildcard dqcheb.f))
+	wget https://netlib.org/quadpack/dqcheb.f
 endif
-ifeq (,$(wildcard ./dqelg.f))
-	wget https://netlib.org/quadpack/dqelg.f -O ./dqelg.f
+ifeq (,$(wildcard dqelg.f))
+	wget https://netlib.org/quadpack/dqelg.f
 endif
-ifeq (,$(wildcard ./dqk15i.f))
-	wget https://netlib.org/quadpack/dqk15i.f -O ./dqk15i.f
+ifeq (,$(wildcard dqk15i.f))
+	wget https://netlib.org/quadpack/dqk15i.f
 endif
-ifeq (,$(wildcard ./dqk15w.f))
-	wget https://netlib.org/quadpack/dqk15w.f -O ./dqk15w.f
+ifeq (,$(wildcard dqk15w.f))
+	wget https://netlib.org/quadpack/dqk15w.f
 endif
-ifeq (,$(wildcard ./dqpsrt.f))
-	wget https://netlib.org/quadpack/dqpsrt.f -O ./dqpsrt.f
+ifeq (,$(wildcard dqpsrt.f))
+	wget https://netlib.org/quadpack/dqpsrt.f
 endif
-ifeq (,$(wildcard ./dqwgtf.f))
-	wget https://netlib.org/quadpack/dqwgtf.f -O ./dqwgtf.f
+ifeq (,$(wildcard dqwgtf.f))
+	wget https://netlib.org/quadpack/dqwgtf.f
 endif
-ifeq (,$(wildcard ./i1mach.f))
-	wget https://netlib.org/port/i1mach.f -O ./i1mach.f
+ifeq (,$(wildcard i1mach.f))
+	wget https://netlib.org/port/i1mach.f
 endif
-ifeq (,$(wildcard ./r1mach.f))
-	wget https://netlib.org/port/r1mach.f -O ./r1mach.f
+ifeq (,$(wildcard r1mach.f))
+	wget https://netlib.org/port/r1mach.f
 endif
-ifeq (,$(wildcard ./xerror.f))
-	wget https://netlib.org/alliant/quad/xerror.f -O ./xerror.f
+ifeq (,$(wildcard xerror.f))
+	wget https://netlib.org/alliant/quad/xerror.f
 endif
-ifeq (,$(wildcard ./xerrwv.f))
-	wget https://netlib.org/alliant/quad/xerrwv.f -O ./xerrwv.f
+ifeq (,$(wildcard xerrwv.f))
+	wget https://netlib.org/alliant/quad/xerrwv.f
 endif
-ifeq (,$(wildcard ./xerprt.f))
-	wget https://netlib.org/alliant/quad/xerprt.f -O ./xerprt.f
+ifeq (,$(wildcard xerprt.f))
+	wget https://netlib.org/alliant/quad/xerprt.f
 endif
-ifeq (,$(wildcard ./xersav.f))
-	wget https://netlib.org/alliant/quad/xersav.f -O ./xersav.f
+ifeq (,$(wildcard xersav.f))
+	wget https://netlib.org/alliant/quad/xersav.f
 endif
-ifeq (,$(wildcard ./xerabt.f))
-	wget https://netlib.org/alliant/quad/xerabt.f -O ./xerabt.f
+ifeq (,$(wildcard xerabt.f))
+	wget https://netlib.org/alliant/quad/xerabt.f
 endif
-ifeq (,$(wildcard ./xerctl.f))
-	wget https://netlib.org/alliant/quad/xerctl.f -O ./xerctl.f
+ifeq (,$(wildcard xerctl.f))
+	wget https://netlib.org/alliant/quad/xerctl.f
 endif
-ifeq (,$(wildcard ./xgetua.f))
-	wget https://netlib.org/alliant/quad/xgetua.f -O ./xgetua.f
+ifeq (,$(wildcard xgetua.f))
+	wget https://netlib.org/alliant/quad/xgetua.f
 endif
-ifeq (,$(wildcard ./j4save.f))
-	wget https://netlib.org/alliant/quad/j4save.f -O ./j4save.f
+ifeq (,$(wildcard j4save.f))
+	wget https://netlib.org/alliant/quad/j4save.f
 endif
-ifeq (,$(wildcard ./s88fmt.f))
-	wget https://netlib.org/alliant/quad/s88fmt.f -O ./s88fmt.f
+ifeq (,$(wildcard s88fmt.f))
+	wget https://netlib.org/alliant/quad/s88fmt.f
 endif
-ifeq (,$(wildcard ./fdump.f))
-	wget https://netlib.org/alliant/quad/fdump.f -O ./fdump.f
+ifeq (,$(wildcard fdump.f))
+	wget https://netlib.org/alliant/quad/fdump.f
 endif
-ifeq (,$(wildcard ./dgtsl.f))
-	wget https://netlib.org/linpack/dgtsl.f -O ./dgtsl.f
+ifeq (,$(wildcard dgtsl.f))
+	wget https://netlib.org/linpack/dgtsl.f
 endif
 	$(F77) $(FFLAGS) -fPIC -c $(SRC)
 	$(F77) -shared -o libquadpack.so $(OBJ)
