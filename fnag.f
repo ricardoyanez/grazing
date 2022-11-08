@@ -30,7 +30,9 @@ C
       IMPLICIT REAL*8(A-H,O-Z)
       EXTERNAL F
       X=ZBRENT(F,A,B,ETA,IFAIL)
-      WRITE(1,*) '*** Call to C05ADF',X,F(X),IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to C05ADF',X,IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -48,7 +50,7 @@ C
       INTEGER NAVAL,LAST
       CALL DQAGI(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,NAVAL,
      +     IFAIL,LIW,LW,LAST,IW,W)
-      IF (IFAIL.NE.0)THEN
+      IF (IFAIL.NE.0) THEN
         WRITE(1,*) '*** Call to D01AMF',RESULT,IFAIL
       ENDIF
       RETURN
@@ -74,7 +76,7 @@ C
       CALL DQAWFE(G,A,OMEGA,KEY,EPSABS,LIMLST,LIMIT,MAXP1,
      &     RESULT,ABSERR,NEVAL,IFAIL,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
      &     RLIST,ELIST,IORD,NNLOG,CHEBMO)
-      IF (IFAIL.NE.0)THEN
+      IF (IFAIL.NE.0) THEN
         WRITE(1,*) '*** Call to D01ASF',RESULT,IFAIL
       ENDIF
       RETURN
@@ -92,7 +94,9 @@ C
       IMPLICIT REAL*8(A-H,O-Z)
       DIMENSION X(N),Y(N)
       CALL FOURPT(X,Y,N,ANS,ER,IFAIL)
-      WRITE(1,*) '*** Call to D01GAF',ANS,ER,IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to D01GAF',ANS,ER,IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -120,7 +124,9 @@ C
       IF (UFLAG.EQ.1) THEN
         IFAIL=0
       ENDIF
-      WRITE(1,*) '*** Call to D02BBF',OUTPUT,IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to D02BBF',OUTPUT,IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -147,7 +153,9 @@ C
       ELSE
         IFAIL=0
       ENDIF
-      WRITE(1,*) '*** Call to E01BEF',F(1),D(1),IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to E01BEF',F(1),D(1),IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -178,7 +186,9 @@ C
       ELSE
         IFAIL=0
       ENDIF
-      WRITE(1,*)'*** Call to E01BFF',PX(1),PF(1),IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*)'*** Call to E01BFF',PX(1),PF(1),IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -212,7 +222,9 @@ C
       ELSE
         IFAIL=0
       ENDIF
-      WRITE(1,*) '*** Call to E01BGF',PX(1),PF(1),PD(1),IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to E01BGF',PX(1),PF(1),PD(1),IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -226,7 +238,9 @@ C
       REAL*8 FUNCTION S14ABF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       S14ABF = c_s14abf(X,IFAIL)
-      WRITE(1,*) '*** Call to S14ABF',X,S14ABF,IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to S14ABF',X,S14ABF,IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -240,7 +254,9 @@ C
       REAL*8 FUNCTION S15ADF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       S15ADF = c_s15adf(X,IFAIL)
-      WRITE(1,*) '*** Call to S15ADF',X,S15ADF
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to S15ADF',X,S15ADF,IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -267,7 +283,9 @@ C
       DO I=1,N
         CY(I)=DCMPLX(CYR(I),CYI(I))
       ENDDO
-      WRITE(1,*) '*** Call to S18DEF',CYR(1),CYI(1),CY(1),IFAIL
+      IF (IFAIL.NE.0) THEN
+        WRITE(1,*) '*** Call to S18DEF',CYR(1),CYI(1),CY(1),IFAIL
+      ENDIF
       RETURN
       END
 C
@@ -281,7 +299,6 @@ C
       REAL*8 FUNCTION X05BAF()
       IMPLICIT REAL*8(A-H,O-Z)
       X05BAF=c_x05baf()
-      WRITE(1,*) '*** Call to X05BAF=',X05BAF
       RETURN
       END
 C
