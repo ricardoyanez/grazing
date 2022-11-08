@@ -6,15 +6,21 @@ Replacing NAG routines for free or open-source alternatives.
 
 ## INSTALLATION
 
-1. Clone this GitHub repository,
+1. Clone repository, enter source directory and compile,
 
    ```  
    $ git clone https://github.com/ricardoyanez/grazing.git  
-2. Compile the program,
-
-   ```  
+   $ cd grazing  
    $ make  
-3. Define the environment were the GRAZING data is located. See section [About Data Files](#about-data-files).
+2. Edit `.bashrc` and add,
+   ```  
+   GRAZ_DIR=$HOME/grazing  
+   GRAZ_MASS_EXP=$GRAZ_DIR/massexp_2004.dat  
+   GRAZ_MASS_NIX=$GRAZ_DIR/mtablex_2004.dat  
+   GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat  
+   export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23  
+
+See section [About Data Files](#about-data-files) for more information about this step.
 
 ## About Data Files
 
@@ -22,7 +28,7 @@ GRAZING comes with three data files, `massexp_2004.dat`, `mtablex_2004.dat` and 
 
 A better way is to define the location of the files via shell environment variables. This supercedes the file names defined in `grazing_file.icl`.
 
-In `.bashrc`
+In `.bashrc` add,
 
 ```
 GRAZ_DIR=$HOME/grazing  
@@ -34,7 +40,7 @@ export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23
 
 `GRAZ_DIR` defines the path to the directory where the data files are located, for example, `$HOME/grazing/` (user) or `/usr/local/share/grazing/` (system-wide).
 
-Changes to GRAZING are distributed as a patches.
+These changes to GRAZING are distributed as a patches.
 
 ## NAG Routine Calls by GRAZING
 
