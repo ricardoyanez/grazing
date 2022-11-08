@@ -22,7 +22,7 @@ grazing: grazcode $(SRC) grazing.o libnag.so nrf77.so rksuite.so quadpack.so amo
 grazcode:
 ifeq (,$(wildcard ../grazing_jun2005.tar.gz))
 	wget http://personalpages.to.infn.it/~nanni/grazing/grazing_jun2005.tar.gz -P ../
-	tar -zxvf ../grazing_jun2005.tar.gz -C /..
+	tar -zxvf ../grazing_jun2005.tar.gz -C ../
 	mv -f makefile makefile.orig
 endif
 
