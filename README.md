@@ -62,11 +62,10 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-The C05ADF routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
+The **C05ADF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **ZBRENT** function,
 
 ```Fortran
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
-
 ```
 
 which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
@@ -82,7 +81,7 @@ real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
 EXTERNAL F
 ```
 
-The D01AMF routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine DQAGI.
+The **D01AMF** routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine **DQAGI**.
 
 ### D01ASF
 
@@ -95,11 +94,11 @@ Calculates an approximation to the sine or the cosine transform of a function g 
  real G, A, OMEGA, EPSABS, RESULT, ABSERR, ERLST(LIMLST), RSLST(LIMLST), W(LW)
  EXTERNAL G
 ```
-The D01ASF routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine QAWFE.
+The **D01ASF** routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine **QAWFE**.
 
 ### D01GAF
 
-D01GAF integrates a function which is specified numerically at four or more points, over the whole of its specified range, using third-order finite-difference formulae with error estimates, according to a method due to Gill and Miller.
+Integrates a function which is specified numerically at four or more points, over the whole of its specified range, using third-order finite-difference formulae with error estimates, according to a method due to Gill and Miller.
 
 ```Fortran
 SUBROUTINE D01GAF(X,Y,N,ANS,ER,IFAIL)
@@ -107,7 +106,7 @@ INTEGER N, IFAIL
 real X(N), Y(N), ANS, ER
 ```
 
-The D01GAF routine is replaced by routine [FOURPT](#gill-miller-algorithm).
+The **D01GAF** routine is replaced by the [Gill-Miller Algorithm](#gill-miller-algorithm) routine **FOURPT**.
 
 ```FORTRAN
 SUBROUTINE FOURPT(X,Y,N,ANS,ER,IFAIL)
@@ -123,7 +122,7 @@ Solves an initial value problem for a first-order system of ordinary differentia
 CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
 ```
 
-The D02BBF routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
+The **D02BBF** routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
 ### E01BEF
 
@@ -135,7 +134,7 @@ INTEGER N, IFAIL
 real X(N), F(N), D(N)
 ```
 
-The E01BEF routine is replaced by [PCHIP](#pchip) routine DPCHIM.
+The **E01BEF** routine is replaced by [PCHIP](#pchip) routine **DPCHIM**.
 
 ```Fortran
 SUBROUTINE DPCHIM (N,X,F,D,INCFD,IERR)
@@ -153,7 +152,7 @@ INTEGER N, M, IFAIL
 real X(N), F(N), D(N), PX(M), PF(M)
 ```
 
-The E01BFF routine is replaced by [PCHIP](#pchip) routine DPCHFE.
+The **E01BFF** routine is replaced by [PCHIP](#pchip) routine **DPCHFE**.
 
 ```Fortran
 SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
@@ -164,7 +163,7 @@ LOGICAL SKIP
 
 ### E01BGF
 
-E01BGF evaluates a piecewise cubic Hermite interpolant and its first derivative at a set of points.
+Evaluates a piecewise cubic Hermite interpolant and its first derivative at a set of points.
 
 ```Fortran
 SUBROUTINE E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
@@ -172,7 +171,7 @@ INTEGER N, M, IFAIL
 real X(N), F(N), D(N), PX(M), PF(M), PD(M)
 ```
 
-The E01BGF routine is replaced by [PCHIP](#pchip) routine DPCHFD.
+The **E01BGF** routine is replaced by [PCHIP](#pchip) routine **DPCHFD**.
 
 ```Fortran
 SUBROUTINE DPCHFD(N,X,F,D,INCFD,SKIP,NE,XE,FE,DE,IERR)
@@ -191,7 +190,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-The S14ABF routine is substituted with a C wrapper function that calls lgamma().
+The **S14ABF** routine is substituted with a C wrapper function that calls **lgamma()**.
 
 ### S15ADF
 
@@ -203,7 +202,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-The S15ADF routine is substituted with a C wrapper function that calls erfc().
+The **S15ADF** routine is substituted with a C wrapper function that calls **erfc()**.
 
 ### S18DEF
 
@@ -218,7 +217,7 @@ complex Z, CY(N)
 CHARACTER∗1 SCALE
 ```
 
-The S18DEF routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions).
+The **S18DEF** routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions) routine **ZBESI**.
 
 ### X05BAF
 
@@ -228,17 +227,17 @@ Returns the amount of processor time used since an unspecified previous time, vi
 real FUNCTION X05BAF()
 ```
 
-The X05BAF routine is substituted with a C wrapper function that calls clock().
+The **X05BAF** routine is substituted with a C wrapper function that calls **clock()**.
 
 ## Numerical Recipes in FORTRAN 77
 
-Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling, is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, the Numerical Recipes source codes will have to be placed in the `nrf77` directory. It will be assumed that any interested person in GRAZING has a personal copy of this excellent book. Necessary changes to the original codes are distributed as patches.
+Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling, is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, the Numerical Recipes source codes will have to be placed in the `nrf77` directory. It will be assumed that any interested person in GRAZING has a personal copy of this excellent book. Any changes to the original codes are distributed as patches.
 
 The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please refer to GitHub regarding any license issues.
 
 ## RKSUITE - a suite of Runde-Kutta codes
 
-[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. The Makefile will download the suite from the forementioned site and compile it for use with GRAZING. If any changes are needed, they will be distributed as a patch.
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. The Makefile will download the suite from the forementioned site and compile it for use with GRAZING. Any changes to the original codes are distributed as patches.
 
 ## QUADPACK - numerical integration
 
@@ -250,7 +249,7 @@ R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine 
 
 ## Amos - Bessel Functions
 
-The Amos routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/). Necessary changes are distributed as a patch.
+The Amos routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/). Any changes to the original codes are distributed as patches.
 
 <ins>REFERENCE</ins>
 
@@ -266,7 +265,7 @@ Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Liv
 
 ## Gill-Miller Algorithm
 
-The routine `FOURPT` is a FORTRAN port of the procedure by Gill and Miller written in ALGOL.
+The routine **FOURPT** is a FORTRAN port of the procedure by Gill and Miller written in ALGOL.
 
 <ins>REFERENCE</ins>
 
