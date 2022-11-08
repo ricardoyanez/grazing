@@ -6,13 +6,15 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * Environmental variables GRAZ_MASS_EXP, GRAZ_MASS_NIX and GRAZ_FILE_BE23 define the location of data files. This supercedes the paths defined in grazing_file.inc
   * X05BAF replaced with a C wrapper that uses clock()
   * C05ADF replaced with Numerical Recipes ZBRENT
-  * Download RKSUITE Fortran code and compile into shared library.
-  * Download rksuite.doc and convert to PDF.
   * D02BBF substituted with RKSUITE.
   * S15ADF substituted with erfc().
   * S14ABF substituted with lgamma().
-  * D01AMF substituted with DQAGI from QUADPACK. -fno-automatic added to FFLAGS
+  * D01AMF substituted with DQAGI from QUADPACK. -fno-automatic added to FFLAGS.
   * S18DEF substituted with Amos Bessel routine ZBESI.
-  * D01ASF substituted with DQAWFE from QUADPACK
+  * D01ASF substituted with DQAWFE from QUADPACK.
+  * E01BEF substituted with DPCHIM from PCHIM.
+  * E01BFF substituted with DPCHFE from PCHIM.
+  * D01GAF substituted with FOURPT, a port from ALGOL of the Gill-Miller Algorithm.
+  * E01BGF substituted with DPCHFD from PCHIM.
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700

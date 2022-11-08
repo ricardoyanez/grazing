@@ -30,7 +30,7 @@ C
       IMPLICIT REAL*8(A-H,O-Z)
       EXTERNAL F
       X=ZBRENT(F,A,B,ETA,IFAIL)
-c$$$      write(*,*) '*** call to C05ADF',X,F(X)
+      WRITE(1,*) '*** Call to C05ADF',X,F(X),IFAIL
       RETURN
       END
 C
@@ -49,7 +49,7 @@ C
       CALL DQAGI(F,BOUND,INF,EPSABS,EPSREL,RESULT,ABSERR,NAVAL,
      +     IFAIL,LIW,LW,LAST,IW,W)
       IF (IFAIL.NE.0)THEN
-        WRITE(*,*) '*** Call to D01AMF',RESULT,IFAIL
+        WRITE(1,*) '*** Call to D01AMF',RESULT,IFAIL
       ENDIF
       RETURN
       END
@@ -75,7 +75,7 @@ C
      &     RESULT,ABSERR,NEVAL,IFAIL,RSLST,ERLST,IERLST,LST,ALIST,BLIST,
      &     RLIST,ELIST,IORD,NNLOG,CHEBMO)
       IF (IFAIL.NE.0)THEN
-        WRITE(*,*) '*** Call to D01ASF',RESULT,IFAIL
+        WRITE(1,*) '*** Call to D01ASF',RESULT,IFAIL
       ENDIF
       RETURN
       END
@@ -92,7 +92,7 @@ C
       IMPLICIT REAL*8(A-H,O-Z)
       DIMENSION X(N),Y(N)
       CALL FOURPT(X,Y,N,ANS,ER,IFAIL)
-c$$$      write(*,*) '*** call to D01GAF',ans,er,ifail
+      WRITE(1,*) '*** Call to D01GAF',ANS,ER,IFAIL
       RETURN
       END
 C
@@ -120,7 +120,7 @@ C
       IF (UFLAG.EQ.1) THEN
         IFAIL=0
       ENDIF
-c$$$      write(*,*) '*** call to D02BBF'
+      WRITE(1,*) '*** Call to D02BBF',OUTPUT,IFAIL
       RETURN
       END
 C
@@ -129,20 +129,25 @@ C
 C     E01BEF computes a monotonicity-preserving piecewise cubic Hermite
 C     interpolant to a set of data points.
 C
-C     The PCHIM routine is used to substitute E01BEF.
+C     The DPCHIM routine is used to substitute E01BEF.
 C
       SUBROUTINE E01BEF(N,X,F,D,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       DIMENSION X(N),F(N),D(N)
-      CALL DPCHIM(N,X,F,D,1,IERR)
+      INTEGER IFAIL,INCFG,IERR
+      INCFD=1
+      CALL DPCHIM(N,X,F,D,INCFD,IERR)
       IF (IERR.EQ.-1) THEN
         IFAIL=1
+      ELSEIF (IERR.EQ.-2) THEN
+        WRITE(*,*)'DPCHIM: INCFD < 1'
+        STOP
       ELSEIF (IERR.EQ.-3) THEN
         IFAIL=2
       ELSE
         IFAIL=0
       ENDIF
-c$$$      write(*,*) '*** call to E01BEF',IFAIL
+      WRITE(1,*) '*** Call to E01BEF',F(1),D(1),IFAIL
       RETURN
       END
 C
@@ -152,16 +157,64 @@ C     E01BFF evaluates a piecewise cubic Hermite interpolant at a set of
 C     points.
 C
 C     The DPCHFE routine is used to substitute E01BFF.
-C      
+C
       SUBROUTINE E01BFF(N,X,F,D,M,PX,PF,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
-      DIMENSION X(N),F(N),D(N),PX(N),PF(N)
+      DIMENSION X(N),F(N),D(N),PX(M),PF(M)
+      INTEGER IFAIL,INCFG,IERR
       LOGICAL SKIP
+      INCGF=1
       SKIP=.TRUE.
-      CALL DPCHFE(N,X,F,D,1,SKIP,M,PX,PF,IFAIL)
-c$$$      write(*,*) '*** Call to E01BFF',PX(1),PF(1),IFAIL
+      CALL DPCHFE(N,X,F,D,INCFD,SKIP,M,PX,PF,IERR)
+      IF (IERR.EQ.-1) THEN
+        IFAIL=1
+      ELSEIF (IERR.EQ.-2) THEN
+        WRITE(*,*)'DPCHFE: INCFD < 1'
+        STOP
+      ELSEIF (IERR.EQ.-3) THEN
+        IFAIL=2
+      ELSEIF (IERR.EQ.-4) THEN
+        IFAIL=3
+      ELSE
+        IFAIL=0
+      ENDIF
+      WRITE(1,*)'*** Call to E01BFF',PX(1),PF(1),IFAIL
       RETURN
-      END 
+      END
+C
+C     ------------------------------------------------------------------------
+C
+C     E01BGF evaluates a piecewise cubic Hermite interpolant and its first
+C     derivative at a set of points.
+C
+C     The DPCHFD routine is used to substitute E01BGF.
+C
+      SUBROUTINE E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
+      IMPLICIT REAL*8(A-H,O-Z)
+      DIMENSION X(N),F(N),D(N),PX(M),PF(M),PD(M)
+      INTEGER IFAIL,INCFD,IERR
+      LOGICAL SKIP
+      INCFD=1
+      SKIP=.TRUE.
+      CALL DPCHFD (N,X,F,D,INCFD,SKIP,M,PX,PF,PD,IERR)
+      IF (IERR.EQ.-1) THEN
+        IFAIL=1
+      ELSEIF (IERR.EQ.-2) THEN
+        WRITE(*,*)'DPCHFD: INCFD < 1'
+        STOP
+      ELSEIF (IERR.EQ.-3) THEN
+        IFAIL=2
+      ELSEIF (IERR.EQ.-4) THEN
+        IFAIL=3
+      ELSEIF (IERR.EQ.-5) THEN
+        WRITE(*,*)'DPCHFD: Error ',IERR
+        STOP
+      ELSE
+        IFAIL=0
+      ENDIF
+      WRITE(1,*) '*** Call to E01BGF',PX(1),PF(1),PD(1),IFAIL
+      RETURN
+      END
 C
 C     ------------------------------------------------------------------------
 C
@@ -173,7 +226,7 @@ C
       REAL*8 FUNCTION S14ABF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       S14ABF = c_s14abf(X,IFAIL)
-c$$$      write(*,*) '*** call to S14ABF',X,S14ABF
+      WRITE(1,*) '*** Call to S14ABF',X,S14ABF,IFAIL
       RETURN
       END
 C
@@ -187,7 +240,7 @@ C
       REAL*8 FUNCTION S15ADF(X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       S15ADF = c_s15adf(X,IFAIL)
-c$$$      write(*,*) '*** call to S15ADF',X,S15ADF
+      WRITE(1,*) '*** Call to S15ADF',X,S15ADF
       RETURN
       END
 C
@@ -214,7 +267,7 @@ C
       DO I=1,N
         CY(I)=DCMPLX(CYR(I),CYI(I))
       ENDDO
-c$$$      write(*,*) '*** call to S18DEF',CYR(1),CYI(1),CY(1),IFAIL
+      WRITE(1,*) '*** Call to S18DEF',CYR(1),CYI(1),CY(1),IFAIL
       RETURN
       END
 C
@@ -228,7 +281,7 @@ C
       REAL*8 FUNCTION X05BAF()
       IMPLICIT REAL*8(A-H,O-Z)
       X05BAF=c_x05baf()
-c$$$      write(*,*) '*** call to X05BAF=',X05BAF
+      WRITE(1,*) '*** Call to X05BAF=',X05BAF
       RETURN
       END
 C
@@ -248,12 +301,6 @@ C
 
       subroutine C05AVF(X,FX,H,BOUNDL,BOUNDU,Y,C,IND,IFAIL)
       write(*,*) '*** call to C05AVF'
-      stop
-      return
-      end
-
-      subroutine E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
-      write(*,*) '*** call to E01BGF'
       stop
       return
       end

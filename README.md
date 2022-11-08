@@ -1,8 +1,8 @@
 
 # GRAZING
-Replacing NAG routines for free or open-source alternatives.
-
 [GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) calculates the outcome of collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther.
+
+Replacing NAG routines for free or open-source alternatives.
 
 ## INSTALLATION
 
@@ -62,7 +62,7 @@ real A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-The `C05ADF` routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
+The C05ADF routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) ZBRENT function,
 
 ```Fortran
 FUNCTION ZBRENT(FUNC,X1,X2,TOL)
@@ -81,7 +81,8 @@ INTEGER INF, LW, IW(LIW), LIW, IFAIL
 real F, BOUND, EPSABS, EPSREL, RESULT, ABSERR, W(LW)
 EXTERNAL F
 ```
-The `D01AMF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `DQAGI`.
+
+The D01AMF routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine DQAGI.
 
 ### D01ASF
 
@@ -90,13 +91,11 @@ Calculates an approximation to the sine or the cosine transform of a function g 
 ```Fortran
  SUBROUTINE D01ASF(G,A,OMEGA,KEY,EPSABS,RESULT,ABSERR,
 1 LIMLST,LST,ERLST,RSLST,IERLST,W,LW,IW,LIW,IFAIL)
- INTEGER KEY, LIMLST, LST, IERLST(LIMLST), LW, IW(LIW),
-1 LIW, IFAIL
- real G, A, OMEGA, EPSABS, RESULT, ABSERR,
-1 ERLST(LIMLST), RSLST(LIMLST), W(LW)
+ INTEGER KEY, LIMLST, LST, IERLST(LIMLST), LW, IW(LIW), LIW, IFAIL
+ real G, A, OMEGA, EPSABS, RESULT, ABSERR, ERLST(LIMLST), RSLST(LIMLST), W(LW)
  EXTERNAL G
 ```
-The `D01ASF` routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine `QAWFE`.
+The D01ASF routine is replaced by [QUADPACK](#quadpack---numerical-integration) routine QAWFE.
 
 ### D01GAF
 
@@ -108,17 +107,23 @@ INTEGER N, IFAIL
 real X(N), Y(N), ANS, ER
 ```
 
-The `D01GAF` routine is replaced by routine [FOURPT](#gill-miller-algorithm).
+The D01GAF routine is replaced by routine [FOURPT](#gill-miller-algorithm).
+
+```FORTRAN
+SUBROUTINE FOURPT(X,Y,N,ANS,ER,IFAIL)
+INTEGER N,IFAIL
+DOUBLE PRECISION X(N),Y(N),ANS,ER
+```
 
 ### D02BBF
 
 Solves an initial value problem for a first-order system of ordinary differential equations using Runge-Kutta methods.
 
 ```Fortran
-   CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
+CALL D02BBF(X,XEND,N,Y,TOL,IRELAB,FCN,OUTPUT,W,IFAIL)
 ```
 
-The `D02BBF` routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
+The D02BBF routine is replaced by [RKSUITE](#rksuite---a-suite-of-runde-kutta-codes).
 
 ### E01BEF
 
@@ -130,7 +135,7 @@ INTEGER N, IFAIL
 real X(N), F(N), D(N)
 ```
 
-The `E01BEF` routine is replaced by [PCHIP](#pchip) routine `DPCHIM`.
+The E01BEF routine is replaced by [PCHIP](#pchip) routine DPCHIM.
 
 ```Fortran
 SUBROUTINE DPCHIM (N,X,F,D,INCFD,IERR)
@@ -148,12 +153,31 @@ INTEGER N, M, IFAIL
 real X(N), F(N), D(N), PX(M), PF(M)
 ```
 
-The `E01BFF` routine is replaced by [PCHIP](#pchip) routine `DPCHFE`.
+The E01BFF routine is replaced by [PCHIP](#pchip) routine DPCHFE.
 
 ```Fortran
 SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
 INTEGER N, NE, IERR
 DOUBLE PRECISION X(N), F(INCFD,N), D(INCFD,N), XE(NE), FE(NE)
+LOGICAL SKIP
+```
+
+### E01BGF
+
+E01BGF evaluates a piecewise cubic Hermite interpolant and its first derivative at a set of points.
+
+```Fortran
+SUBROUTINE E01BGF(N,X,F,D,M,PX,PF,PD,IFAIL)
+INTEGER N, M, IFAIL
+real X(N), F(N), D(N), PX(M), PF(M), PD(M)
+```
+
+The E01BGF routine is replaced by [PCHIP](#pchip) routine DPCHFD.
+
+```Fortran
+SUBROUTINE DPCHFD(N,X,F,D,INCFD,SKIP,NE,XE,FE,DE,IERR)
+INTEGER N, NE, IERR
+DOUBLE PRECISION X(N), F(INCFD,N), D(INCFD,N), XE(NE), FE(NE), DE(NE)
 LOGICAL SKIP
 ```
 
@@ -167,7 +191,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-The `S14ABF` routine is substituted with a C wrapper function that calls `lgamma()`.
+The S14ABF routine is substituted with a C wrapper function that calls lgamma().
 
 ### S15ADF
 
@@ -179,7 +203,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-The `S15ADF` routine is substituted with a C wrapper function that calls `erfc()`.
+The S15ADF routine is substituted with a C wrapper function that calls erfc().
 
 ### S18DEF
 
@@ -194,7 +218,7 @@ complex Z, CY(N)
 CHARACTER∗1 SCALE
 ```
 
-The `S18DEF` routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions).
+The S18DEF routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions).
 
 ### X05BAF
 
@@ -204,7 +228,7 @@ Returns the amount of processor time used since an unspecified previous time, vi
 real FUNCTION X05BAF()
 ```
 
-The `X05BAF` routine is substituted with a C wrapper function that calls `clock()`.
+The X05BAF routine is substituted with a C wrapper function that calls clock().
 
 ## Numerical Recipes in FORTRAN 77
 
@@ -238,7 +262,7 @@ The PCHIP routines are part of the Slatec Library. They can be found in [Netlib]
 
 <ins>REFERENCE</ins>
 
-Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Livermore National Laboratory
+Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Livermore National Laboratory.
 
 ## Gill-Miller Algorithm
 
@@ -246,7 +270,7 @@ The routine `FOURPT` is a FORTRAN port of the procedure by Gill and Miller writt
 
 <ins>REFERENCE</ins>
 
-Gill P. E. and Miller G. F. (1972) An algorithm for the integration of unequally spaced data, Comput. J. 15 80–83.
+Gill P. E. and Miller G. F. (1972) An algorithm for the integration of unequally spaced data, *Comput. J.* 15 80–83.
 
 ## changelog
 

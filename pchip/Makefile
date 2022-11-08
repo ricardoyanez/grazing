@@ -1,7 +1,7 @@
 F77=gfortran
 FFLAGS=-g -std=legacy -fno-automatic
 
-SRC=dpchim.f dpchst.f dpchfe.f dchfev.f xermsg.f xerprn.f xerhlt.f xersve.f xercnt.f
+SRC=dpchim.f dpchst.f dpchfe.f dchfev.f dpchfd.f dchfdv.f xermsg.f xerprn.f xerhlt.f xersve.f xercnt.f
 OBJ=$(SRC:%.f=%.o)
 
 quadpack:
@@ -16,6 +16,12 @@ ifeq (,$(wildcard dpchfe.f))
 endif
 ifeq (,$(wildcard dchfev.f))
 	wget https://netlib.org/slatec/pchip/dchfev.f
+endif
+ifeq (,$(wildcard dpchfd.f))
+	wget https://netlib.org/slatec/pchip/dpchfd.f
+endif
+ifeq (,$(wildcard dchfdv.f))
+	wget https://netlib.org/slatec/pchip/dchfdv.f
 endif
 ifeq (,$(wildcard xermsg.f))
 	wget https://netlib.org/slatec/src/xermsg.f
