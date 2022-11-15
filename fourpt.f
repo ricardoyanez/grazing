@@ -1,17 +1,18 @@
+C     Author:        Ricardo Yanez <ricardo.yanez@calel.org>
+C     Date:          2022-11-07
+C     Last modified: 2022-11-15
 C
 C     This subroutine evaluates the integral from x[1] to x[n] of a function
-C     whose values at points x[i], i = 1,n are stored in f[i], i = 1,n. The
+C     whose values at points x[i], i = 1,n are stored in y[i], i = 1,n. The
 C     points x[i], which need not be equally spaced, are assumed to be
 C     distinct and arranged in ascending or descending order. The integration
 C     is performed using a 4-point rule over each interval.
 C
-C     Based of Gill P E and Miller G F (1972) An algorithm for the integration
-C     of unequally spaced data, Comput. J. 15 80–83, Angol procedure.
+C     Based of Gill P. E. and Miller G. F. (1972), An algorithm for the
+C     integration of unequally spaced data, Comput. J. 15 80–83, describing
+C     an Angol procedure, which is interpreted and ported to FORTRAN.
 C
 C     Written explicitly to replace NAG FORTRAN Library routine D01GAF.
-C
-C     Author: Ricardo Yanez <ricardo.yanez@calel.org>
-C     Date: 2022-11-07
 C
 C     This program is free software; you can redistribute it and/or modify
 C     it under the terms of the GNU General Public License as published by
