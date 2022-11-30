@@ -19,5 +19,6 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * S14AAF substituted with tgamma().
   * S18AEF substituted with BESSI0.
   * S18AFF substituted with BESSI1.
+  * Final report, grazing.pdf,
 
  -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700
