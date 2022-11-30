@@ -33,6 +33,7 @@ C
       EXTERNAL F
       DIMENSION XB1(10),XB2(10)
       LOGICAL SUCCES
+C     Attempt to find a bracket
       IF (F(A)*F(B).GT.0.0) THEN
         NB=10
         CALL ZBRAK(F,A,B,2000,XB1,XB2,NB)
@@ -396,6 +397,3 @@ C
       D1MACH=c_d1mach(I)
       RETURN
       END
-
-
-
