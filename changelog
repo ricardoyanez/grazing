@@ -1,4 +1,10 @@
-grazing (0.0.1) UNRELEASED; urgency=medium
+grazing (1.0.0) unstable; urgency=medium
+
+  * First official release.
+
+ -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 29 Nov 2022 20:57:53 -0800
+
+grazing (0.0.1) unstable; urgency=medium
 
   * Initial release.
   * Created github repository https://github.com/ricardoyanez/grazing
@@ -21,4 +27,4 @@ grazing (0.0.1) UNRELEASED; urgency=medium
   * S18AFF substituted with BESSI1.
   * Final report, grazing.pdf,
 
- -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 11 Oct 2022 11:51:04 -0700
+ -- Ricardo Yanez <ricardo.yanez@calel.org>  Tue, 29 Nov 2022 20:57:08 -0800
