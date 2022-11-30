@@ -144,7 +144,7 @@ INTEGER N,IFAIL
 REAL X(N),F(N),D(N)
 ```
 
-The **E01BEF** routine is replaced by [PCHIP](#pchip-piecewise-cubic-hermite-interpolation-package) routine **DPCHIM**.
+The **E01BEF** routine is replaced by [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHIM**.
 
 ```Fortran
 SUBROUTINE DPCHIM(N,X,F,D,INCFD,IERR)
@@ -162,7 +162,7 @@ INTEGER N,M,IFAIL
 REAL X(N),F(N),D(N),PX(M),PF(M)
 ```
 
-The **E01BFF** routine is replaced by [PCHIP](#pchip) routine **DPCHFE**.
+The **E01BFF** routine is replaced by [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHFE**.
 
 ```Fortran
 SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
@@ -181,7 +181,7 @@ INTEGER N,M,IFAIL
 REAL X(N),F(N),D(N),PX(M),PF(M),PD(M)
 ```
 
-The **E01BGF** routine is replaced by [PCHIP](#pchip) routine **DPCHFD**.
+The **E01BGF** routine is replaced by [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHFD**.
 
 ```Fortran
 SUBROUTINE DPCHFD(N,X,F,D,INCFD,SKIP,NE,XE,FE,DE,IERR)
