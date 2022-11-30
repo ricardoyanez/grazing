@@ -144,7 +144,7 @@ INTEGER N,IFAIL
 REAL X(N),F(N),D(N)
 ```
 
-The **E01BEF** routine is replaced by [PCHIP](#pchip) routine **DPCHIM**.
+The **E01BEF** routine is replaced by [PCHIP](#pchip-piecewise-cubic-hermite-interpolation-package) routine **DPCHIM**.
 
 ```Fortran
 SUBROUTINE DPCHIM(N,X,F,D,INCFD,IERR)
@@ -273,7 +273,7 @@ COMPLEX Z,CY(N)
 CHARACTER∗1 SCALE
 ```
 
-The **S18DEF** routine is replaced by the modified Bessel function of [Amos](#amos---bessel-functions) routine **ZBESI**.
+The **S18DEF** routine is replaced by the modified Bessel function of [AMOS](#amos---bessel-functions) routine **ZBESI**.
 
 ### X05BAF
 
@@ -303,15 +303,15 @@ The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please ref
 
 R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
 
-## Amos - Bessel Functions
+## AMOS - Bessel Functions
 
-The Amos routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/). Any changes to the original codes are distributed as patches.
+The AMOS routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/). Any changes to the original codes are distributed as patches.
 
 <ins>REFERENCE</ins>
 
 Amos, D. E. (1986) Algorithm 644: A portable package for Bessel functions of a complex argument and nonnegative order. *ACM Trans. Math. Software 12 265–273*.
 
-## PCHIP
+## PCHIP - Piecewise Cubic Hermite Interpolation Package
 
 The PCHIP routines are part of the Slatec Library. They can be found in [Netlib](https://netlib.org/slatec/pchip/).
 
@@ -341,4 +341,4 @@ Please report bugs to Ricardo Yanez &lt;ricardo.yanez@calel.org&gt;.
 
 ## License
 
-The wrappers to substitute the NAG libraries in GRAZING were written by Ricardo Yanez &lt;ricardo.yanez@calel.org&gt; and licensed under the [GNU General Public License (GPL) version 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) or later.
+The routines and wrappers to substitute the NAG routines in GRAZING were written by Ricardo Yanez &lt;ricardo.yanez@calel.org&gt; and licensed under the [GNU General Public License (GPL) version 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) or later.
