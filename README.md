@@ -29,7 +29,7 @@ See section [About Data Files](#about-data-files) for more information about thi
 
 GRAZING comes with three data files, `massexp_2004.dat`, `mtablex_2004.dat` and `be23.dat`. The location of these files is defined in `grazing_file.icl` and must be changed for every compilation of GRAZING.
 
-A better way is to define the location of the files via shell environment variables. This supercedes the file names defined in `grazing_file.icl`.
+A better way is to define the location of the files via shell environment variables. This supersedes the file names defined in `grazing_file.icl`.
 
 In `.bashrc` add,
 
@@ -60,15 +60,7 @@ REAL A,B,EPS,ETA,F,X
 EXTERNAL F
 ```
 
-The **C05ADF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **ZBRENT** function,
-
-```Fortran
-FUNCTION ZBRENT(FUNC,X1,X2,TOL)
-REAL X1,X2,TOL
-EXTERNAL FUNC
-```
-
-which uses Brent's method to find the root of function `FUNC` known to lie between `X1` and `X2`. The root is refined until its accuracy is `TOL`.
+The **C05ADF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **ZBRENT** function.
 
 ### C05AVF
 
@@ -144,13 +136,7 @@ INTEGER N,IFAIL
 REAL X(N),F(N),D(N)
 ```
 
-The **E01BEF** routine is replaced by [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHIM**.
-
-```Fortran
-SUBROUTINE DPCHIM(N,X,F,D,INCFD,IERR)
-INTEGER N,IERR
-DOUBLE PRECISION X(N),F(INCFD,N),D(INCFD,N)
-```
+The **E01BEF** routine is replaced by the [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHIM**.
 
 ### E01BFF
 
@@ -162,14 +148,7 @@ INTEGER N,M,IFAIL
 REAL X(N),F(N),D(N),PX(M),PF(M)
 ```
 
-The **E01BFF** routine is replaced by [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHFE**.
-
-```Fortran
-SUBROUTINE DPCHFE(N,X,F,D,INCFD,SKIP,NE,XE,FE,IERR)
-INTEGER N,NE,IERR
-DOUBLE PRECISION X(N),F(INCFD,N),D(INCFD,N),XE(NE),FE(NE)
-LOGICAL SKIP
-```
+The **E01BFF** routine is replaced by then [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHFE**.
 
 ### E01BGF
 
@@ -181,14 +160,7 @@ INTEGER N,M,IFAIL
 REAL X(N),F(N),D(N),PX(M),PF(M),PD(M)
 ```
 
-The **E01BGF** routine is replaced by [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHFD**.
-
-```Fortran
-SUBROUTINE DPCHFD(N,X,F,D,INCFD,SKIP,NE,XE,FE,DE,IERR)
-INTEGER N,NE,IERR
-DOUBLE PRECISION X(N),F(INCFD,N),D(INCFD,N),XE(NE),FE(NE),DE(NE)
-LOGICAL SKIP
-```
+The **E01BGF** routine is replaced by the [PCHIP](#pchip---piecewise-cubic-hermite-interpolation-package) routine **DPCHFD**.
 
 ### S14AAF
 
@@ -236,12 +208,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-The **S18AEF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **BESSI0** function,
-
-```Fortran
-FUNCTION BESSI0(X)
-REAL X
-```
+The **S18AEF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **BESSI0** function.
 
 ### S18AFF
 
@@ -253,12 +220,7 @@ INTEGER IFAIL
 REAL X
 ```
 
-The **S18AFF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **BESSI1** function,
-
-```Fortran
-FUNCTION BESSI1(X)
-REAL X
-```
+The **S18AFF** routine is replaced by the [Numerical Recipes](#numerical-recipes-in-fortran-77) **BESSI1** function.
 
 ### S18DEF
 
@@ -285,31 +247,25 @@ REAL FUNCTION X05BAF()
 
 The **X05BAF** routine is substituted with a C wrapper function that calls **clock()**.
 
-## Numerical Recipes in FORTRAN 77
-
-Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling, is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, the Numerical Recipes source codes will have to be placed in the `nrf77` directory. It will be assumed that any interested person in GRAZING has a personal copy of this excellent book. Any changes to the original codes are distributed as patches.
-
-The codes can be found in [GitHub](https://github.com/wangvei/nrf77). Please refer to GitHub regarding any license issues.
-
-## RKSUITE - a suite of Runde-Kutta codes
-
-[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license. The Makefile will download the suite from the forementioned site and compile it for use with GRAZING. Any changes to the original codes are distributed as patches.
-
-## QUADPACK - numerical integration
-
-[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. The authors are Robert Piessens, Elise deDoncker-Kapenga, Christian Überhuber and David Kahaner. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/). The Makefile will download the necessary codes from Netlib and compile them for use with GRAZING.
-
-<ins>REFERENCE</ins>
-
-R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
-
 ## AMOS - Bessel Functions
 
-The AMOS routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/). Any changes to the original codes are distributed as patches.
+The AMOS routines for evaluating Bessel functions are distributed by [Netlib](https://netlib.org/amos/).
 
 <ins>REFERENCE</ins>
 
 Amos, D. E. (1986) Algorithm 644: A portable package for Bessel functions of a complex argument and nonnegative order. *ACM Trans. Math. Software 12 265–273*.
+
+## Gill-Miller Algorithm
+
+The routine **FOURPT** is a FORTRAN port of the procedure by Gill and Miller written in ALGOL.
+
+<ins>REFERENCE</ins>
+
+Gill P. E. and Miller G. F. (1972) An algorithm for the integration of unequally spaced data, *Comput. J.* 15 80–83.
+
+## Numerical Recipes in FORTRAN 77
+
+Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling, is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, the Numerical Recipes source codes will have to be placed in the `nrf77` directory. It will be assumed that any interested person in GRAZING has a personal copy of this excellent book.
 
 ## PCHIP - Piecewise Cubic Hermite Interpolation Package
 
@@ -319,13 +275,17 @@ The PCHIP routines are part of the Slatec Library. They can be found in [Netlib]
 
 Fritsch F. N. (1982) PCHIP final specifications Report UCID–30194 Lawrence Livermore National Laboratory.
 
-## Gill-Miller Algorithm
+## QUADPACK - numerical integration
 
-The routine **FOURPT** is a FORTRAN port of the procedure by Gill and Miller written in ALGOL.
+[QUADPACK](https://nines.cs.kuleuven.be/software/QUADPACK/) is a set of Fortran 77 routines for integrating one-variable functions. QUADPACK is licensed as Public Domain and its source code can be downloaded from [Netlib](https://netlib.org/quadpack/).
 
 <ins>REFERENCE</ins>
 
-Gill P. E. and Miller G. F. (1972) An algorithm for the integration of unequally spaced data, *Comput. J.* 15 80–83.
+R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine package for automatic integration. Springer, ISBN: 3-540-12553-1. 1983. 
+
+## RKSUITE - a suite of Runde-Kutta codes
+
+[RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license.
 
 ## changelog
 
