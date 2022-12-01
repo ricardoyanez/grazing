@@ -25,26 +25,6 @@ Replacing NAG routines for free or open-source alternatives.
    $ source ~/.bashrc  
 See section [About Data Files](#about-data-files) for more information about this step.
 
-## About Data Files
-
-GRAZING comes with three data files, `massexp_2004.dat`, `mtablex_2004.dat` and `be23.dat`. The location of these files is defined in `grazing_file.icl` and must be changed for every compilation of GRAZING.
-
-A better way is to define the location of the files via shell environment variables. This supersedes the file names defined in `grazing_file.icl`.
-
-In `.bashrc` add,
-
-```
-GRAZ_DIR=$HOME/grazing  
-GRAZ_MASS_EXP=$GRAZ_DIR/massexp_2004.dat  
-GRAZ_MASS_NIX=$GRAZ_DIR/mtablex_2004.dat  
-GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat  
-export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23  
-```
-
-`GRAZ_DIR` defines the path to the directory where the data files are located, for example, `$HOME/grazing/` (user) or `/usr/local/share/grazing/` (system-wide).
-
-These changes to GRAZING are distributed as patches.
-
 ## NAG Routine Calls by GRAZING
 
 GRAZING uses the Fortran NAG Library Mark 18. NAG does not maintain the documentation of older versions. Fortunately, the documentation for Mark 18 can be found in this [site](https://www1.udel.edu/nag/ohufl18pd/LibDoc.html).
@@ -287,13 +267,21 @@ R. Piessens, E. De Doncker-Kapenga and C. W. Überhuber. QUADPACK: a subroutine 
 
 [RKSUITE](https://netlib.sandia.gov/ode/rksuite/) is a suite of Runde-Kutta codes that is available free of charge to the scientific community. It has no discernable license.
 
-## changelog
+## About Data Files
 
-This project uses debchange to create and manage the changelog,
+GRAZING comes with three data files, `massexp_2004.dat`, `mtablex_2004.dat` and `be23.dat`. The location of these files is defined in `grazing_file.icl` and must be changed for every compilation of GRAZING. To avoid this, the location of the files are instead defined via shell environment variables. This supersedes the file names defined in `grazing_file.icl`.
+
+In `.bashrc` add,
+
 ```
-$ debchange --create --newversion 0.0.1 --package grazing --changelog changelog  
-$ debchange -a --changelog changelog
+GRAZ_DIR=$HOME/grazing  
+GRAZ_MASS_EXP=$GRAZ_DIR/massexp_2004.dat  
+GRAZ_MASS_NIX=$GRAZ_DIR/mtablex_2004.dat  
+GRAZ_FILE_BE23=$GRAZ_DIR/be23.dat  
+export GRAZ_MASS_EXP GRAZ_MASS_NIX GRAZ_FILE_BE23  
 ```
+
+`GRAZ_DIR` defines the path to the directory where the data files are located, for example, `$HOME/grazing/` (user) or `/usr/local/share/grazing/` (system-wide).
 
 ## Bug Reporting
 
