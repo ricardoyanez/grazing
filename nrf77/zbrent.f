@@ -1,16 +1,10 @@
-      REAL*8 FUNCTION ZBRENT(FUNC,X1,X2,TOL,IFAIL)
-      IMPLICIT REAL*8(A-H,O-Z)
-      EXTERNAL FUNC
-      PARAMETER (ITMAX=100,EPS=3.D-8)
+      FUNCTION ZBRENT(FUNC,X1,X2,TOL)
+      PARAMETER (ITMAX=100,EPS=3.E-8)
       A=X1
       B=X2
       FA=FUNC(A)
       FB=FUNC(B)
-c$$$      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
-      IF(FB*FA.GT.0.) THEN
-        IFAIL=1
-        RETURN
-      ENDIF
+      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
       FC=FB
       DO 11 ITER=1,ITMAX
         IF(FB*FC.GT.0.) THEN
@@ -19,7 +13,7 @@ c$$$      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
           D=B-A
           E=D
         ENDIF
-        IF(DABS(FC).LT.DABS(FB)) THEN
+        IF(ABS(FC).LT.ABS(FB)) THEN
           A=B
           B=C
           C=A
@@ -27,14 +21,13 @@ c$$$      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
           FB=FC
           FC=FA
         ENDIF
-        TOL1=2.*EPS*DABS(B)+0.5*TOL
+        TOL1=2.*EPS*ABS(B)+0.5*TOL
         XM=.5*(C-B)
-        IF(DABS(XM).LE.TOL1 .OR. FB.EQ.0.)THEN
+        IF(ABS(XM).LE.TOL1 .OR. FB.EQ.0.)THEN
           ZBRENT=B
-          IFAIL=0
           RETURN
         ENDIF
-        IF(DABS(E).GE.TOL1 .AND. DABS(FA).GT.DABS(FB)) THEN
+        IF(ABS(E).GE.TOL1 .AND. ABS(FA).GT.ABS(FB)) THEN
           S=FB/FA
           IF(A.EQ.C) THEN
             P=2.*XM*S
@@ -46,8 +39,8 @@ c$$$      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
             Q=(Q-1.)*(R-1.)*(S-1.)
           ENDIF
           IF(P.GT.0.) Q=-Q
-          P=DABS(P)
-          IF(2.*P .LT. MIN(3.*XM*Q-DABS(TOL1*Q),DABS(E*Q))) THEN
+          P=ABS(P)
+          IF(2.*P .LT. MIN(3.*XM*Q-ABS(TOL1*Q),ABS(E*Q))) THEN
             E=D
             D=P/Q
           ELSE
@@ -60,16 +53,14 @@ c$$$      IF(FB*FA.GT.0.) PAUSE 'Root must be bracketed for ZBRENT.'
         ENDIF
         A=B
         FA=FB
-        IF(DABS(D) .GT. TOL1) THEN
+        IF(ABS(D) .GT. TOL1) THEN
           B=B+D
         ELSE
           B=B+SIGN(TOL1,XM)
         ENDIF
         FB=FUNC(B)
 11    CONTINUE
-c$$$      PAUSE 'ZBRENT exceeding maximum iterations.'
-      WRITE(*,*)'WARNING: ZBRENT exceeding maximum iterations.',B,FB
-      IFAIL=0
+      PAUSE 'ZBRENT exceeding maximum iterations.'
       ZBRENT=B
       RETURN
       END
