@@ -1,8 +1,7 @@
 
-# GRAZING
-[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) calculates the outcome of collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther.
+# GRAZING - NAG Routine Replacements
 
-Replacing NAG routines for free or open-source alternatives.
+[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) calculates the outcome of grazing collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther. This project is about replacing the NAG routines used by GRAZING for free or open-source alternatives.
 
 ## Installation
 
