@@ -90,7 +90,7 @@ REAL X(N),Y(N),ANS,ER
 
 The **D01GAF** routine is replaced by the [Gill-Miller Algorithm](#gill-miller-algorithm) routine **FOURPT**.
 
-```FORTRAN
+```Fortran
 SUBROUTINE FOURPT(X,Y,N,ANS,ER,IFAIL)
 INTEGER N,IFAIL
 DOUBLE PRECISION X(N),Y(N),ANS,ER
@@ -237,13 +237,13 @@ Amos, D. E. (1986) Algorithm 644: A portable package for Bessel functions of a c
 
 ## Gill-Miller Algorithm
 
-The routine **FOURPT** is a FORTRAN port of the procedure by Gill and Miller written in ALGOL.
+The routine **FOURPT** is a Fortran port of the procedure by Gill and Miller written in ALGOL.
 
 <ins>REFERENCE</ins>
 
 Gill P. E. and Miller G. F. (1972) An algorithm for the integration of unequally spaced data, *Comput. J.* 15 80–83.
 
-## Numerical Recipes in FORTRAN 77
+## Numerical Recipes in Fortran 77
 
 Whomever has purchased a copy of *Numerical Recipes in Fortran 77: The Art of Scientific Computing* by William Press, Brian Flannery, Saul Teukolsky and William Vetterling, is entitled to use the machine readable programs for personal use. Since distributing a copy is explicitly forbidden, the Numerical Recipes source codes will have to be placed in the `nrf77` directory. It will be assumed that any interested person in GRAZING has a personal copy of this excellent book.
 
