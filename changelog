@@ -1,3 +1,11 @@
+grazing (1.0.1) unstable; urgency=medium
+
+  * C05ADF: Removed calls to ZBACK and ZBRAC. Caused changes to original A and B, leading to errors in calling function.
+  * D01ASF: Bug, IORD and NNLOG not dimensioned causing segmentation fault in QUADPACK dqpsrt.
+  * QUADPACK Makefile download dqagie.f, dqelg.f, dqk15i.f, dqpsrt.f twice. Fixed.
+
+ -- Ricardo Yanez <ricardo.yanez@calel.org>  Fri, 09 Dec 2022 21:00:19 -0800
+
 grazing (1.0.0) unstable; urgency=medium
 
   * First official release.
