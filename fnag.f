@@ -26,8 +26,6 @@ C     bisection.
 C
 C     The Numerical Recipes ZBRENT function is used to substitute C05ADF.
 C
-C     Calls ZBACK and ZBRAC in case input is not backeted.
-C
       SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       EXTERNAL F
