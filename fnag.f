@@ -31,23 +31,6 @@ C
       SUBROUTINE C05ADF(A,B,EPS,ETA,F,X,IFAIL)
       IMPLICIT REAL*8(A-H,O-Z)
       EXTERNAL F
-      DIMENSION XB1(10),XB2(10)
-      LOGICAL SUCCES
-C     Attempt to find a bracket
-      IF (F(A)*F(B).GT.0.0) THEN
-        NB=10
-        CALL ZBRAK(F,A,B,2000,XB1,XB2,NB)
-        IF (NB.GT.1) THEN
-          WRITE(1,*)'*** C05ADF A,B,NB,XB1,XB2',A,B,NB,XB1(1),XB2(1)
-          A=XB1(1)
-          B=XB2(1)
-        ELSE
-          CALL ZBRAC(F,A,B,SUCCES)
-          IF (SUCCES) THEN
-            WRITE(1,*)'*** C05ADF A,B',A,B
-          ENDIF
-        ENDIF
-      ENDIF      
       X=ZBRENT(F,A,B,ETA,IFAIL)
       IF (IFAIL.NE.0) THEN
         WRITE(1,*) '*** Call to C05ADF',F(A),F(B),X,IFAIL
