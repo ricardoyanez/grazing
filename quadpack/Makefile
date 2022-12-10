@@ -25,9 +25,6 @@ endif
 ifeq (,$(wildcard dqpsrt.f))
 	wget https://netlib.org/quadpack/dqpsrt.f
 endif
-ifeq (,$(wildcard dqagie.f))
-	wget https://netlib.org/quadpack/dqagie.f
-endif
 ifeq (,$(wildcard dqawfe.f))
 	wget https://netlib.org/quadpack/dqawfe.f
 endif
@@ -40,17 +37,8 @@ endif
 ifeq (,$(wildcard dqcheb.f))
 	wget https://netlib.org/quadpack/dqcheb.f
 endif
-ifeq (,$(wildcard dqelg.f))
-	wget https://netlib.org/quadpack/dqelg.f
-endif
-ifeq (,$(wildcard dqk15i.f))
-	wget https://netlib.org/quadpack/dqk15i.f
-endif
 ifeq (,$(wildcard dqk15w.f))
 	wget https://netlib.org/quadpack/dqk15w.f
-endif
-ifeq (,$(wildcard dqpsrt.f))
-	wget https://netlib.org/quadpack/dqpsrt.f
 endif
 ifeq (,$(wildcard dqwgtf.f))
 	wget https://netlib.org/quadpack/dqwgtf.f
