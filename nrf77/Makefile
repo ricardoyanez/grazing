@@ -9,6 +9,15 @@ nrf77:
 ifeq (,$(wildcard $(SRC)))
 	@echo 'Before proceeding, copy the source into this directory:' $(SRC) && exit 1
 endif
+ifeq (,$(wildcard zbrent.f.orig))
+	cp -a zbrent.f zbrent.f.orig
+endif
+ifeq (,$(wildcard bessi0.f.orig))
+	cp -a bessi0.f bessi0.f.orig
+endif
+ifeq (,$(wildcard bessi1.f.orig))
+	cp -a bessi1.f bessi1.f.orig
+endif
 	patch -Nur /dev/null zbrent.f zbrent.f.patch || true
 	patch -Nur /dev/null bessi0.f bessi0.f.patch || true
 	patch -Nur /dev/null bessi1.f bessi1.f.patch || true
