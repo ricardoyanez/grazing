@@ -9,6 +9,7 @@ OBJ=$(SRC:%.f=%.o)
 quadpack:
 ifeq (,$(wildcard zbesi.f))
 	wget https://netlib.org/amos/zbesi.f
+	cp -af zbesi.f zbesi.f.orig
 endif
 ifeq (,$(wildcard dgamln.f))
 	wget https://netlib.org/amos/dgamln.f
@@ -94,4 +95,5 @@ endif
 	install libamos.so ../
 
 clean:
+	cp -af zbesi.f.orig zbesi.f
 	rm -f *.o *.so *~
