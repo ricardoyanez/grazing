@@ -1,7 +1,9 @@
 
 # GRAZING - NAG Routine Replacements
 
-[GRAZING](http://personalpages.to.infn.it/~nanni/grazing/) calculates the outcome of grazing collisions between two heavy nuclei using the [Grazing Model](http://dx.doi.org/10.1016/0375-9474(94)90430-8) of Aage Winther. This project is about replacing the NAG routines used by GRAZING for free or open-source alternatives.
+The [GRAZING code](http://personalpages.to.infn.it/~nanni/grazing/) is based on the macroscopic model of grazing collisions proposed by [Aage Winther](http://dx.doi.org/10.1016/0375-9474(94)90430-8). Classical motion of colliding nuclei is combined with excitation of collective states and single-particle transfers along trajectories near and around the point of closest approach. The grazing model describes fairly well the mass and charge distributions, the angular and kinetic energy distributions of reaction products resulting from inelastic reactions in which a few nucleons are transferred. The GRAZING code is written in Fortran and uses the [NAG Library](https://www.nag.com/content/nag-library/) for various numerical calculations of the model.
+
+This project is about replacing the NAG routines used by GRAZING for free or open-source alternatives.
 
 ## Installation
 

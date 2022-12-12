@@ -41,7 +41,7 @@ double c_x05baf_() {
 }
 
 /*
- * S14AAF eturns the value of the Gamma function, via the routine name
+ * S14AAF returns the value of the Gamma function, via the routine name
  *
  * This wapper uses the GNU C Library function tgamma().
  *
